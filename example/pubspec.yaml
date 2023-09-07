@@ -1,13 +1,12 @@
 name: deno_postgres_interop_example
-description: prisma test.
+description: An example for deno_postgres_interop package.
 version: 1.0.0
 publish_to: none
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ^3.0.0
 
 dependencies:
-  collection: ^1.18.0
   edge: ^0.0.5
   supabase_functions: ^0.0.1
 
