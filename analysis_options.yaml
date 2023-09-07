@@ -3,7 +3,7 @@ include: package:solid_lints/analysis_options.yaml
 linter:
   rules:
     avoid_classes_with_only_static_members: false
-    public_member_api_docs: false
+    public_member_api_docs: true
     no_leading_underscores_for_local_identifiers: true
     unnecessary_breaks: true
     prefer_foreach: true
