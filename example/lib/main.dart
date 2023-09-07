@@ -8,6 +8,7 @@ Future<Response> fetch(Request _) async {
   if (dbUrl == null) return Response.error();
 
   final client = Client(dbUrl);
+  await client.connect();
   final result = await transaction(client);
   await client.end();
 
