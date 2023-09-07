@@ -5,6 +5,7 @@
 # deno_postgres_interop
 This package was created to be used in supabase edge functions
 because existing db-driver/orm packages depend on dart:io.
+It should also work for other cases with dart2js.
 
 ## Usage
 1. Compile the code that uses this package with:
