@@ -3,6 +3,7 @@
 /// More dartdocs go here.
 library;
 
-export 'src/deno_postgres_interop_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/client.dart';
+export 'src/query_client.dart';
+export 'src/query_object_result.dart';
+export 'src/transaction.dart';
