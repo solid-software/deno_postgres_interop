@@ -9,26 +9,21 @@ Future<Response> fetch(Request _) async {
 
   final client = Client(dbUrl);
   await client.connect();
-  final result = await transaction(client);
+  final result = await client.transaction('transaction', transaction);
   await client.end();
 
   return Response(result.rows.map(rowToPrettyString).join('\n\n'));
 }
 
-Future<QueryObjectResult<dynamic>> transaction(Client client) async {
-  final transaction = client.createTransaction('transaction');
-
-  await transaction.begin();
+Future<QueryObjectResult<dynamic>> transaction(Queryable transaction) async {
   await transaction.queryObject(
     'UPDATE public."User" '
-    "SET username='user${client.hashCode}' "
+    "SET username='user${transaction.hashCode}' "
     "WHERE last_name='user'",
   );
   await Future.delayed(const Duration(seconds: 10));
-  final result = await transaction.queryObject('SELECT * FROM public."User"');
-  await transaction.commit();
 
-  return result;
+  return transaction.queryObject('SELECT * FROM public."User"');
 }
 
 String rowToPrettyString(Map<String, dynamic> row) => row

@@ -14,4 +14,13 @@ class QueryClient with Queryable {
 extension QueryClientProps on QueryClient {
   Transaction createTransaction(String name) =>
       callMethod(this, 'createTransaction', [name]);
+
+  Future<T> transaction<T>(String name, Future<T> Function(Queryable) f) async {
+    final transaction = createTransaction(name);
+    await transaction.begin();
+    final result = await f(transaction);
+    await transaction.commit();
+
+    return result;
+  }
 }
