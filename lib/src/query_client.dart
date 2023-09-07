@@ -2,11 +2,11 @@
 import 'dart:js_interop';
 import 'dart:js_util';
 
-import 'package:deno_postgres_interop/src/can_query.dart';
+import 'package:deno_postgres_interop/src/queryable.dart';
 import 'package:deno_postgres_interop/src/transaction.dart';
 
 @JS()
-class QueryClient with CanQuery {
+class QueryClient with Queryable {
   external Future<void> connect();
   external Future<void> end();
 }
