@@ -1,5 +1,7 @@
 [![style: solid](https://img.shields.io/badge/style-solid-orange)](https://pub.dev/packages/solid_lints)
 
+[![$solid_lints](https://nokycucwgzweensacwfy.supabase.co/functions/v1/get_project_badge?projectName=deno_postgres_interop)](https://www.worklog.ai)
+
 # deno_postgres_interop
 This package was created to be used in supabase edge functions
 because existing db-driver/orm packages depend on dart:io.
