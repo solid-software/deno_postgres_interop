@@ -1,4 +1,4 @@
-import 'package:prisma/deno_postgres_interop.dart';
+import 'package:deno_postgres_interop/deno_postgres_interop.dart';
 import 'package:supabase_functions/supabase_functions.dart';
 
 void main() => SupabaseFunctions(fetch: fetch);
@@ -8,6 +8,13 @@ Future<Response> fetch(Request _) async {
   if (dbUrl == null) return Response.error();
 
   final client = Client(dbUrl);
+  final result = await transaction(client);
+  await client.end();
+
+  return Response(result.rows.map(rowToPrettyString).join('\n\n'));
+}
+
+Future<QueryObjectResult<dynamic>> transaction(Client client) async {
   final transaction = client.createTransaction('transaction');
 
   await transaction.begin();
@@ -20,9 +27,7 @@ Future<Response> fetch(Request _) async {
   final result = await transaction.queryObject('SELECT * FROM public."User"');
   await transaction.commit();
 
-  await client.end();
-
-  return Response(result.rows.map(rowToPrettyString).join('\n\n'));
+  return result;
 }
 
 String rowToPrettyString(Map<String, dynamic> row) => row

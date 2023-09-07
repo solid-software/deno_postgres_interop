@@ -7,6 +7,8 @@ environment:
   sdk: ^3.0.0
 
 dependencies:
+  deno_postgres_interop:
+    path: ..
   edge: ^0.0.5
   supabase_functions: ^0.0.1
 
