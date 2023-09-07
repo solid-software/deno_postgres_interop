@@ -15,7 +15,7 @@ Future<Response> fetch(Request _) async {
   return Response(result.rows.map(rowToPrettyString).join('\n\n'));
 }
 
-Future<QueryObjectResult<dynamic>> transaction(Queryable transaction) async {
+Future<QueryObjectResult<dynamic>> transaction(Transaction transaction) async {
   await transaction.queryObject(
     'UPDATE public."User" '
     "SET username='user${transaction.hashCode}' "
