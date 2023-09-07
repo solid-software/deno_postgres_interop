@@ -7,16 +7,16 @@ This package was created to be used in supabase edge functions
 because existing db-driver/orm packages depend on dart:io.
 
 ## Usage
-1. Compile the code that uses this package with
+1. Compile the code that uses this package with:
    ```bash
    dart run edge build supabase_functions
    ```
 
-2. Add an import(s) to compiled `main.dart.js`
+2. Add an import to compiled `main.dart.js`
    ```js
    import { Client } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
    ```
-   add other imports from `postgres v0.17.0` as necessary for your code
+   add other imports from `postgres v0.17.0` as necessary for your code.
 
 3. Replace all constructors to not use `self.`:
 
