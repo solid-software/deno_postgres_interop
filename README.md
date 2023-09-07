@@ -12,19 +12,18 @@ because existing db-driver/orm packages depend on dart:io.
    dart run edge build supabase_functions
    ```
 
-2. Add an import to compiled `main.dart.js`
+2. Add imports from `postgres v0.17.0` to compiled `main.dart.js`, e.g.:
    ```js
    import { Client } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
    ```
-   add other imports from `postgres v0.17.0` as necessary for your code.
 
-3. Replace all constructors to not use `self.`:
+3. Replace all constructors to not use `self.`, e.g.:
 
    `new self.Pool(...)` => `new Pool(...)`
 
 4. You can use the function now.
 
-Note: for steps 2, 3 you can use a script like that:
+Note: For steps 2, 3 you can use a script like this:
 ```bash
 #!/bin/bash
 
