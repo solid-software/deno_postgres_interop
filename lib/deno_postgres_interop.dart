@@ -1,6 +1,4 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+/// An interop for deno-postgres.
 library;
 
 export 'src/client.dart';
