@@ -13,3 +13,4 @@ linter:
     unnecessary_to_list_in_spreads: true
     unnecessary_lambdas: true
     noop_primitive_operations: true
+    package_api_docs: true
