@@ -1,5 +1,4 @@
-.dart_tool/
-.packages
-build/
 .dart_tool
+.packages
+build
 supabase/functions/dart_edge
