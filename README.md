@@ -12,21 +12,38 @@ since other drivers rely on dart:io and don't work there.
 The main scenario is Supabase Edge Functions, but it should also work for other cases with dart2js.
 
 ## Usage with Supabase edge functions
-1. Compile the code that uses this package with:
+1. Add dependency in your pubspec.yaml:
+   ```yaml
+   dev_dependencies:
+     deno_postgres_interop: <INSERT LATEST VERSION>
+   ```
+
+   or run
+
+   ```bash
+   dart pub add deno_postgres_interop
+   ```
+
+2. Import the package:
+   ```dart
+   import 'package:deno_postgres_interop/deno_postgres_interop.dart';
+   ```
+
+3. Compile the code that uses this package with:
    ```bash
    dart run edge build supabase_functions
    ```
 
-2. Add imports from `postgres v0.17.0` to compiled `main.dart.js`, e.g.:
+4. Add imports from `postgres v0.17.0` to compiled `main.dart.js`, e.g.:
    ```js
    import { Client } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
    ```
 
-3. Replace all constructors to not use `self.`, e.g.:
+5. Replace all constructors to not use `self.`, e.g.:
 
    `new self.Pool(...)` => `new Pool(...)`
 
-4. You can use the function now.
+6. You can use the function now.
 
 Note: For steps 2, 3 you can use a script like this:
 ```bash
