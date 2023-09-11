@@ -34,15 +34,10 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
    dart run edge build supabase_functions
    ```
 
-4. Add imports from `postgres v0.17.0` to compiled `main.dart.js`, e.g.:
-   ```js
-   import { Client } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
+4. Add imports to generated file by calling the script:
+   ```bash
+   python3 add_imports.py example/functions/dart_edge/main.dart.js
    ```
+   Note: your filepath may differ from the example
 
-5. After imports, initialize constructors
-
-   ```js
-   self.Client = Client;
-   ```
-
-6. You can use the function now.
+5. You can use the function now.
