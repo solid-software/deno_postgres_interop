@@ -2,14 +2,6 @@ include: package:solid_lints/analysis_options.yaml
 
 linter:
   rules:
-    avoid_classes_with_only_static_members: false
     public_member_api_docs: false
-    no_leading_underscores_for_local_identifiers: true
-    unnecessary_breaks: true
     prefer_foreach: true
-    prefer_adjacent_string_concatenation: true
     prefer_single_quotes: true
-    use_raw_strings: true
-    unnecessary_to_list_in_spreads: true
-    unnecessary_lambdas: true
-    noop_primitive_operations: true
