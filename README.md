@@ -39,22 +39,10 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
    import { Client } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
    ```
 
-5. Replace all constructors to not use `self.`, e.g.:
+5. After imports, initialize constructors
 
-   `new self.Pool(...)` => `new Pool(...)`
+   ```js
+   self.Client = Client;
+   ```
 
 6. You can use the function now.
-
-Note: For steps 2, 3 you can use a script like this:
-```bash
-#!/bin/bash
-
-file_path="functions/dart_edge/main.dart.js"
-prefix="import { Client } from \"https://deno.land/x/postgres@v0.17.0/mod.ts\";"
-old_string="self\.Client"
-new_string="Client"
-
-echo "$prefix" | cat - "$file_path" > temp_file && mv temp_file "$file_path"
-
-sed -i "" "s/$old_string/$new_string/g" "$file_path"
-```
