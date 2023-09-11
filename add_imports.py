@@ -1,37 +1,34 @@
 import argparse
 from pathlib import Path
+import yaml
 
 search_for_prefix = 'new self.'
 
-classes_map = {
-    'query/query.ts': ['QueryObjectResult'],
-    'mod.ts': ['QueryClient', 'Client', 'Transaction'], 
-}
-
-file_url_prefix = 'https://deno.land/x/postgres@v0.17.0/'
-
 
 def main():
-    filename = read_filename()
+    filename, configpath = read_args()
     source = Path(filename).read_text()
+    config = yaml.safe_load(Path(configpath).read_text())
+
+    print(config)
 
     indices = find_indices(source)
-    classes = filter_classes(indices, source)
+    classes = filter_classes(indices, source, config['classes_map'])
 
     if (len(classes) == 0):
         return
 
-    new_source = create_prefix(classes) + '\n' + source
-
+    new_source = create_prefix(classes, config['file_url_prefix']) + '\n' + source
     Path(filename).write_text(new_source)
 
 
-def read_filename():
+def read_args():
     argument_parser = argparse.ArgumentParser()
     argument_parser.add_argument('filename')
+    argument_parser.add_argument('configpath')
     args = argument_parser.parse_args()
     
-    return args.filename
+    return args.filename, args.configpath
 
 
 def find_indices(source):
@@ -47,7 +44,7 @@ def find_indices(source):
     return indices
 
 
-def filter_classes(indices, source):
+def filter_classes(indices, source, classes_map):
     prefix_len = len(search_for_prefix)
 
     classes = []
@@ -69,13 +66,20 @@ def filter_classes(indices, source):
     return classes
 
 
-def create_prefix(classes):
+def create_prefix(classes, file_url_prefix):
     return '\n'.join(
         map(
             lambda f: '\n'.join(
                 map(f, classes)
             ),
-            [create_import_string, create_init_string]
+            [
+                lambda class_: create_import_string(
+                    class_[0],
+                    class_[1],
+                    file_url_prefix,
+                ),
+                create_init_string,
+            ]
         )
     )
 
@@ -85,8 +89,7 @@ def create_init_string(class_):
     return f'self.{classname} = {classname}'
 
 
-def create_import_string(class_):
-    classname, filename = class_
+def create_import_string(classname, filename, file_url_prefix):
     url = f'{file_url_prefix}{filename}'
     return f'import {{ {classname} }} from "{url}";'
 
