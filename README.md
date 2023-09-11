@@ -2,9 +2,14 @@
 [![style: solid](https://img.shields.io/badge/style-solid-orange)](https://pub.dev/packages/solid_lints)
 [![$solid_lints](https://nokycucwgzweensacwfy.supabase.co/functions/v1/get_project_badge?projectName=deno_postgres_interop)](https://www.worklog.ai)
 
-This package was created to be used in supabase edge functions
-because existing db-driver/orm packages depend on dart:io.
-It should also work for other cases with dart2js.
+The package allows the use
+of [Deno Postgres](https://deno.land/x/postgres)
+in [Deno Deploy](https://deno.com/deploy)
+on [dart_edge](https://docs.dartedge.dev/)
+by creating interop bindings for the js library
+since other drivers rely on dart:io and don't work there.
+
+The main scenario is Supabase Edge Functions, but it should also work for other cases with dart2js.
 
 ## Usage with Supabase edge functions
 1. Compile the code that uses this package with:
