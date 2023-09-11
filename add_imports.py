@@ -8,6 +8,9 @@ classes_map = {
     'mod.ts': ['QueryClient', 'Client', 'Transaction'], 
 }
 
+file_url_prefix = 'https://deno.land/x/postgres@v0.17.0/'
+
+
 def main():
     argument_parser = argparse.ArgumentParser()
     argument_parser.add_argument('filename')
@@ -41,18 +44,32 @@ def main():
         if filename is not None:
             classes.append((classname, filename))
 
-
-    new_source = ''
-    for classname, filename in classes:
-        url = f'https://deno.land/x/postgres@v0.17.0/{filename}'
-        new_source += f'import {{ {classname} }} from "{url}";\n'
-    
-    for classname, filename in classes:
-        new_source += f'self.{classname} = {classname}\n'
-
-    new_source += source
+    new_source = create_prefix(classes) + '\n' + source
 
     Path(args.filename).write_text(new_source)
+
+
+def create_prefix(classes):
+    return '\n'.join(
+        map(
+            lambda f: '\n'.join(
+                map(f, classes)
+            ),
+            [create_import_string, create_init_string]
+        )
+    )
+
+
+def create_init_string(class_):
+    classname= class_[0]
+    return f'self.{classname} = {classname}'
+
+
+def create_import_string(class_):
+    classname, filename = class_
+    url = f'{file_url_prefix}{filename}'
+    return f'import {{ {classname} }} from "{url}";'
+
 
 if __name__ == '__main__':
     main()
