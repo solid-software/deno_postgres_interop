@@ -16,24 +16,7 @@ def main():
     source = Path(filename).read_text()
 
     indices = find_indices(source)
-    
-    prefix_len = len(search_for_prefix)
-
-    classes = []
-    for index in indices:
-        end = source.find('(', index)
-        start = index + prefix_len
-        classname = source[start:end]
-
-        filename_ = None
-        for file, file_classes in classes_map.items():
-            if classname in file_classes:
-                filename_ = file
-                break
-
-        if filename_ is not None:
-            classes.append((classname, filename_))
-
+    classes = filter_classes(indices, source)
     new_source = create_prefix(classes) + '\n' + source
 
     Path(filename).write_text(new_source)
@@ -58,6 +41,27 @@ def find_indices(source):
         start_index = index + 1
 
     return indices
+
+
+def filter_classes(indices, source):
+    prefix_len = len(search_for_prefix)
+
+    classes = []
+    for index in indices:
+        end = source.find('(', index)
+        start = index + prefix_len
+        classname = source[start:end]
+
+        filename_ = None
+        for file, file_classes in classes_map.items():
+            if classname in file_classes:
+                filename_ = file
+                break
+
+        if filename_ is not None:
+            classes.append((classname, filename_))
+    
+    return classes
 
 
 def create_prefix(classes):
