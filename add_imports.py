@@ -17,6 +17,10 @@ def main():
 
     indices = find_indices(source)
     classes = filter_classes(indices, source)
+
+    if (len(classes) == 0):
+        return
+
     new_source = create_prefix(classes) + '\n' + source
 
     Path(filename).write_text(new_source)
@@ -59,7 +63,8 @@ def filter_classes(indices, source):
                 break
 
         if filename_ is not None:
-            classes.append((classname, filename_))
+            if source.find(f'import {{ {classname} }}') == -1:
+                classes.append((classname, filename_))
     
     return classes
 
