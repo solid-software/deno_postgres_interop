@@ -12,41 +12,52 @@ file_url_prefix = 'https://deno.land/x/postgres@v0.17.0/'
 
 
 def main():
-    argument_parser = argparse.ArgumentParser()
-    argument_parser.add_argument('filename')
-    args = argument_parser.parse_args()
-    source = Path(args.filename).read_text()
+    filename = read_filename()
+    source = Path(filename).read_text()
 
-    indexes = []
-    start_index = 0
-
-    while True:
-        index = source.find(search_for_prefix, start_index)
-        if index == -1:
-            break
-        indexes.append(index)
-        start_index = index + 1
-
+    indices = find_indices(source)
+    
     prefix_len = len(search_for_prefix)
 
     classes = []
-    for index in indexes:
+    for index in indices:
         end = source.find('(', index)
         start = index + prefix_len
         classname = source[start:end]
 
-        filename = None
+        filename_ = None
         for file, file_classes in classes_map.items():
             if classname in file_classes:
-                filename = file
+                filename_ = file
                 break
 
-        if filename is not None:
-            classes.append((classname, filename))
+        if filename_ is not None:
+            classes.append((classname, filename_))
 
     new_source = create_prefix(classes) + '\n' + source
 
-    Path(args.filename).write_text(new_source)
+    Path(filename).write_text(new_source)
+
+
+def read_filename():
+    argument_parser = argparse.ArgumentParser()
+    argument_parser.add_argument('filename')
+    args = argument_parser.parse_args()
+    
+    return args.filename
+
+
+def find_indices(source):
+    indices = []
+    start_index = 0
+    while True:
+        index = source.find(search_for_prefix, start_index)
+        if index == -1:
+            break
+        indices.append(index)
+        start_index = index + 1
+
+    return indices
 
 
 def create_prefix(classes):
