@@ -8,7 +8,12 @@ import 'package:yaml/yaml.dart';
 
 void main(List<String> arguments) {
   try {
-    final (sourceFile, config) = init(arguments);
+    final Args(:filename, :configpath) = Args.parse(arguments);
+
+    final configString = File(configpath).readAsStringSync();
+    final config = Config.fromYaml(configString);
+    
+    final sourceFile = File(filename);
     final sourceString = sourceFile.readAsStringSync();
     final newSource = createNewSource(sourceString, config);
     if (newSource == sourceString) return;
@@ -21,14 +26,6 @@ void main(List<String> arguments) {
   } on ArgParserException {
     print(Args.usage);
   }
-}
-
-(File, Config) init(List<String> arguments) {
-  final Args(:filename, :configpath) = Args.parse(arguments);
-  final configString = File(configpath).readAsStringSync();
-  final config = Config.fromYaml(configString);
-
-  return (File(filename), config);
 }
 
 String createNewSource(String sourceString, Config config) {
