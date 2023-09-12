@@ -8,21 +8,15 @@ import 'package:collection/collection.dart';
 void main(List<String> arguments) {
   try {
     final (sourceFile, config) = init(arguments);
-
-    final sourceString = mapException(
-      sourceFile.readAsStringSync,
-      (_) => 'Error while reading source from "${sourceFile.path}"',
-    );
-
+    final sourceString = sourceFile.readAsStringSync();
     final newSource = createNewSource(sourceString, config);
     if (newSource == sourceString) return;
 
-    mapException(
-      () => sourceFile.writeAsStringSync(newSource),
-      (_) => 'Error while writing new source to "${sourceFile.path}"',
-    );
+    sourceFile.writeAsStringSync(newSource);
   } on String catch (e) {
     print(e);
+  } on FileSystemException catch (e) {
+    print('Error while accessing ${e.path}');
   }
 }
 
