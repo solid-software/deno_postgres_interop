@@ -36,8 +36,9 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
 
 4. Add imports to generated file by calling the script:
    ```bash
-   python3 add_imports.py example/functions/dart_edge/main.dart.js
+   dart run tools/add_imports/bin/add_imports.dart
+     --filename=example/functions/dart_edge/main.dart.js
    ```
-   Note: your filepath may differ from the example
+   Note: your filename may differ from the example
 
 5. You can use the function now.
