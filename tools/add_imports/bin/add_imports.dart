@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:add_imports/src/args.dart';
 import 'package:add_imports/src/config.dart';
-import 'package:add_imports/src/util.dart';
 import 'package:args/args.dart';
 import 'package:collection/collection.dart';
 import 'package:yaml/yaml.dart';
