@@ -36,7 +36,7 @@ jobs:
       
       - name: Dart Code Metrics
         if: steps.check_files.outputs.files_exists == 'true'
-        uses: danylo-safonov-solid/dart-code-metrics-action@52976f8337fb27f3cd46f79728bff916c986ce56
+        uses: solid-software/dart-code-metrics-action@v5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           fatal_warnings: true
