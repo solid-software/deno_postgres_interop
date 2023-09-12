@@ -5,3 +5,4 @@ linter:
     prefer_foreach: true
     prefer_single_quotes: true
     public_member_api_docs: false
+    avoid_print: false
