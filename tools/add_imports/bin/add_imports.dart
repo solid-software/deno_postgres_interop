@@ -2,17 +2,17 @@ import 'dart:io';
 
 import 'package:add_imports/src/args.dart';
 import 'package:add_imports/src/config.dart';
-import 'package:add_imports/src/function_or_null.dart';
+import 'package:add_imports/src/util.dart';
 import 'package:collection/collection.dart';
 
 void main(List<String> arguments) {
   try {
     final (sourceFile, config) = init(arguments);
 
-    final sourceString = sourceFile.readAsStringSync.orNull();
-    if (sourceString == null) {
-      throw 'Error while reading source from "${sourceFile.path}"';
-    }
+    final sourceString = mapException(
+      sourceFile.readAsStringSync,
+      (_) => 'Error while reading source from "${sourceFile.path}"',
+    );
 
     final classes = RegExp(r'new self.([A-Za-z]+)\(')
         .allMatches(sourceString)
@@ -42,27 +42,27 @@ void main(List<String> arguments) {
       sourceString,
     ].join('\n');
 
-    try {
-      sourceFile.writeAsStringSync(newSource);
-    } catch (_) {
-      throw 'Error while writing new source to "${sourceFile.path}"';
-    }
+    mapException(
+      () => sourceFile.writeAsStringSync(newSource),
+      (_) => 'Error while writing new source to "${sourceFile.path}"',
+    );
   } on String catch (e) {
     print(e);
   }
 }
 
 (File, Config) init(List<String> arguments) {
-  final args = (() => Args.parse(arguments)).orNull();
-  if (args == null) throw Args.usage;
+  final Args(
+    :filename,
+    :configpath,
+  ) = mapException(() => Args.parse(arguments), (_) => Args.usage);
 
-  final config = (() => Config.fromYaml(
-        File(args.configpath).readAsStringSync(),
-      )).orNull();
+  final config = mapException(
+    () => Config.fromYaml(
+      File(configpath).readAsStringSync(),
+    ),
+    (_) => 'Error while reading config from "$configpath"',
+  );
 
-  if (config == null) {
-    throw 'Error while reading config from "${args.configpath}"';
-  }
-
-  return (File(args.filename), config);
+  return (File(filename), config);
 }
