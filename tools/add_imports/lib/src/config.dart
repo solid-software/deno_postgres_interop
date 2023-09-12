@@ -1,8 +1,11 @@
+import 'package:collection/collection.dart';
 import 'package:yaml/yaml.dart';
 
 class Config {
   final String fileUrlPrefix;
   final Map<String, List<String>> classesMap;
+
+  Set<String> get classes => classesMap.values.flattened.toSet();
 
   Config({required this.fileUrlPrefix, required this.classesMap});
 

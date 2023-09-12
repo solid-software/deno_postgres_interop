@@ -19,7 +19,7 @@ void main(List<String> arguments) {
         .map((e) => e.group(1))
         .whereNotNull()
         .toSet()
-        .intersection(config.classesMap.values.flattened.toSet())
+        .intersection(config.classes)
         .whereNot((e) => sourceString.contains('import { $e }'))
         .toList();
 
