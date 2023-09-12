@@ -44,8 +44,8 @@ void main(List<String> arguments) {
   final inits = classes.map((e) => 'self.$e = $e');
 
   final newSource = [
-    imports.join('\n'),
-    inits.join('\n'),
+    ...imports,
+    ...inits,
     sourceString,
   ].join('\n');
 
