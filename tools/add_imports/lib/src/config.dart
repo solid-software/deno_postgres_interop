@@ -25,6 +25,13 @@ class Config {
     );
   }
 
-  String filenameForClass(String classname) =>
+  String _filenameForClass(String classname) =>
       classesMap.entries.firstWhere((e) => e.value.contains(classname)).key;
+
+  String importStringForClass(String classname) {
+    final filename = _filenameForClass(classname);
+    final url = '$fileUrlPrefix$filename';
+
+    return 'import { $classname } from "$url";';
+  }
 }

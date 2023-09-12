@@ -25,20 +25,10 @@ void main(List<String> arguments) {
 
     if (classes.isEmpty) return;
 
-    final imports = classes.map(
-      (classname) {
-        final filename = config.filenameForClass(classname);
-        final url = '${config.fileUrlPrefix}$filename';
-
-        return 'import { $classname } from "$url";';
-      },
-    );
-
-    final inits = classes.map((e) => 'self.$e = $e');
-
     final newSource = [
-      ...imports,
-      ...inits,
+      ...[config.importStringForClass, (e) => 'self.$e = $e']
+          .map(classes.map)
+          .flattened,
       sourceString,
     ].join('\n');
 
