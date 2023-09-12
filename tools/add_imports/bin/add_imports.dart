@@ -6,25 +6,17 @@ import 'package:add_imports/src/function_or_null.dart';
 import 'package:collection/collection.dart';
 
 void main(List<String> arguments) {
-  final args = (() => Args.parse(arguments)).orNull();
-  if (args == null) {
-    print(Args.usage);
+  final state = init(arguments);
+  if (state == null) return;
+
+  final (sourceFile, config) = state;
+
+  final sourceString = sourceFile.readAsStringSync.orNull();
+  if (sourceString == null) {
+    print('Error while reading source from "${sourceFile.path}"');
 
     return;
   }
-
-  final config = (() => Config.fromYaml(
-        File(args.configpath).readAsStringSync(),
-      )).orNull();
-
-  if (config == null) {
-    print('Error while reading config from "${args.configpath}"');
-
-    return;
-  }
-
-  final sourceFile = File(args.filename);
-  final sourceString = sourceFile.readAsStringSync();
 
   final classes = RegExp(r'new self.([A-Za-z]+)\(')
       .allMatches(sourceString)
@@ -57,5 +49,32 @@ void main(List<String> arguments) {
     sourceString,
   ].join('\n');
 
-  sourceFile.writeAsStringSync(newSource);
+  try {
+    sourceFile.writeAsStringSync(newSource);
+  } catch (_) {
+    print('Error while writing new source to "${sourceFile.path}"');
+
+    return;
+  }
+}
+
+(File, Config)? init(List<String> arguments) {
+  final args = (() => Args.parse(arguments)).orNull();
+  if (args == null) {
+    print(Args.usage);
+
+    return null;
+  }
+
+  final config = (() => Config.fromYaml(
+        File(args.configpath).readAsStringSync(),
+      )).orNull();
+
+  if (config == null) {
+    print('Error while reading config from "${args.configpath}"');
+
+    return null;
+  }
+
+  return (File(args.filename), config);
 }
