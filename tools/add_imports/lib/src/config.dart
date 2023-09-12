@@ -21,12 +21,4 @@ class Config {
       fileUrlPrefix: parsedYaml['file_url_prefix'] as String,
     );
   }
-
-  static Config? tryFromYaml(String yamlString) {
-    try {
-      return Config.fromYaml(yamlString);
-    } catch (_) {
-      return null;
-    }
-  }
 }

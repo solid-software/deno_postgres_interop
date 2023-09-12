@@ -2,17 +2,27 @@ import 'dart:io';
 
 import 'package:add_imports/src/args.dart';
 import 'package:add_imports/src/config.dart';
+import 'package:add_imports/src/util.dart';
 import 'package:collection/collection.dart';
 
 void main(List<String> arguments) {
-  final args = Args.tryParse(arguments);
+  final args = (() => Args.parse(arguments)).orNull();
   if (args == null) {
     print(Args.usage);
 
     return;
   }
 
-  final config = Config.fromYaml(File(args.configpath).readAsStringSync());
+  final config = (() => Config.fromYaml(
+        File(args.configpath).readAsStringSync(),
+      )).orNull();
+
+  if (config == null) {
+    print('Error while reading config from "${args.configpath}"');
+
+    return;
+  }
+
   final sourceFile = File(args.filename);
   final sourceString = sourceFile.readAsStringSync();
 

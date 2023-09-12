@@ -15,18 +15,9 @@ class Args {
   factory Args.parse(List<String> arguments) {
     final result = parser.parse(arguments);
 
-
     return Args(
       filename: result['filename'] as String,
       configpath: result['configpath'] as String,
     );
-  }
-
-  static Args? tryParse(List<String> arguments) {
-    try {
-      return Args.parse(arguments);
-    } catch (_) {
-      return null;
-    }
   }
 }
