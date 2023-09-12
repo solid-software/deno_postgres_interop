@@ -14,7 +14,7 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
 ## Usage with Supabase edge functions
 1. Add dependency in your pubspec.yaml:
    ```yaml
-   dev_dependencies:
+   dependencies:
      deno_postgres_interop: <INSERT LATEST VERSION>
    ```
 
