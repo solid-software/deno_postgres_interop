@@ -1,0 +1,44 @@
+name: On PR & Push do code check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: 'pubspec.yaml'
+
+      - name: Setup dart
+        if: steps.check_files.outputs.files_exists == 'true'
+        uses: dart-lang/setup-dart@v1
+
+      - name: Get dependencies
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: dart pub get
+
+      - name: Run static code analysis
+        if: steps.check_files.outputs.files_exists == 'true'
+        uses: invertase/github-action-dart-analyzer@v1
+        with:
+          fatal-infos: true
+      
+      - name: Dart Code Metrics
+        if: steps.check_files.outputs.files_exists == 'true'
+        uses: danylo-safonov-solid/dart-code-metrics-action@52976f8337fb27f3cd46f79728bff916c986ce56
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          fatal_warnings: true
+          fatal_style: true
+
+      - name: Check formatting
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: dart format . --set-exit-if-changed
