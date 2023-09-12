@@ -10,19 +10,23 @@ class Config {
   Config({required this.fileUrlPrefix, required this.classesMap});
 
   factory Config.fromYaml(String yamlString) {
-    final parsedYaml = loadYaml(yamlString) as YamlMap;
+    try {
+      final parsedYaml = loadYaml(yamlString) as YamlMap;
 
-    final classesMap = (parsedYaml['classes_map'] as YamlMap).map(
-      (key, value) => MapEntry(
-        key as String,
-        [...value as YamlList].cast<String>(),
-      ),
-    );
+      final classesMap = (parsedYaml['classes_map'] as YamlMap).map(
+        (key, value) => MapEntry(
+          key as String,
+          [...value as YamlList].cast<String>(),
+        ),
+      );
 
-    return Config(
-      classesMap: classesMap,
-      fileUrlPrefix: parsedYaml['file_url_prefix'] as String,
-    );
+      return Config(
+        classesMap: classesMap,
+        fileUrlPrefix: parsedYaml['file_url_prefix'] as String,
+      );
+    } catch (_) {
+      throw YamlException('', null);
+    }
   }
 
   String _filenameForClass(String classname) =>

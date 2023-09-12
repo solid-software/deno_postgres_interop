@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:add_imports/src/args.dart';
 import 'package:add_imports/src/config.dart';
 import 'package:add_imports/src/util.dart';
+import 'package:args/args.dart';
 import 'package:collection/collection.dart';
+import 'package:yaml/yaml.dart';
 
 void main(List<String> arguments) {
   try {
@@ -13,25 +15,19 @@ void main(List<String> arguments) {
     if (newSource == sourceString) return;
 
     sourceFile.writeAsStringSync(newSource);
-  } on String catch (e) {
-    print(e);
   } on FileSystemException catch (e) {
     print('Error while accessing ${e.path}');
+  } on YamlException {
+    print('Error while parsing config');
+  } on ArgParserException {
+    print(Args.usage);
   }
 }
 
 (File, Config) init(List<String> arguments) {
-  final Args(
-    :filename,
-    :configpath,
-  ) = mapException(() => Args.parse(arguments), (_) => Args.usage);
-
-  final config = mapException(
-    () => Config.fromYaml(
-      File(configpath).readAsStringSync(),
-    ),
-    (_) => 'Error while reading config from "$configpath"',
-  );
+  final Args(:filename, :configpath) = Args.parse(arguments);
+  final configString = File(configpath).readAsStringSync();
+  final config = Config.fromYaml(configString);
 
   return (File(filename), config);
 }
