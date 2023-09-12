@@ -21,4 +21,7 @@ class Config {
       fileUrlPrefix: parsedYaml['file_url_prefix'] as String,
     );
   }
+
+  String filenameForClass(String classname) =>
+      classesMap.entries.firstWhere((e) => e.value.contains(classname)).key;
 }

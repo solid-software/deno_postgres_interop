@@ -27,10 +27,7 @@ void main(List<String> arguments) {
 
     final imports = classes.map(
       (classname) {
-        final filename = config.classesMap.entries
-            .firstWhere((e) => e.value.contains(classname))
-            .key;
-
+        final filename = config.filenameForClass(classname);
         final url = '${config.fileUrlPrefix}$filename';
 
         return 'import { $classname } from "$url";';
