@@ -1,0 +1,7 @@
+include: package:solid_lints/analysis_options.yaml
+
+linter:
+  rules:
+    public_member_api_docs: false
+    prefer_foreach: true
+    prefer_single_quotes: true
