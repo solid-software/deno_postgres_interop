@@ -14,23 +14,8 @@ void main(List<String> arguments) {
       (_) => 'Error while reading source from "${sourceFile.path}"',
     );
 
-    final classes = RegExp(r'new self.([A-Za-z]+)\(')
-        .allMatches(sourceString)
-        .map((e) => e.group(1))
-        .whereNotNull()
-        .toSet()
-        .intersection(config.classes)
-        .whereNot((e) => sourceString.contains('import { $e }'))
-        .toList();
-
-    if (classes.isEmpty) return;
-
-    final newSource = [
-      ...[config.importStringForClass, (e) => 'self.$e = $e']
-          .map(classes.map)
-          .flattened,
-      sourceString,
-    ].join('\n');
+    final newSource = createNewSource(sourceString, config);
+    if (newSource == sourceString) return;
 
     mapException(
       () => sourceFile.writeAsStringSync(newSource),
@@ -55,4 +40,22 @@ void main(List<String> arguments) {
   );
 
   return (File(filename), config);
+}
+
+String createNewSource(String sourceString, Config config) {
+  final classes = RegExp(r'new self.([A-Za-z]+)\(')
+      .allMatches(sourceString)
+      .map((e) => e.group(1))
+      .whereNotNull()
+      .toSet()
+      .intersection(config.classes)
+      .whereNot((e) => sourceString.contains('import { $e }'))
+      .toList();
+
+  return [
+    ...[config.importStringForClass, (e) => 'self.$e = $e']
+        .map(classes.map)
+        .flattened,
+    sourceString,
+  ].join('\n');
 }
