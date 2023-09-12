@@ -25,6 +25,9 @@ jobs:
         if: steps.check_files.outputs.files_exists == 'true'
         run: dart pub get
 
+      - run: dart pub get
+        working-directory: tools/add_imports
+
       - name: Run static code analysis
         if: steps.check_files.outputs.files_exists == 'true'
         uses: invertase/github-action-dart-analyzer@v1
