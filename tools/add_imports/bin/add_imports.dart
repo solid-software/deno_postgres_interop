@@ -12,7 +12,7 @@ void main(List<String> arguments) {
 
     final configString = File(configpath).readAsStringSync();
     final config = Config.fromYaml(configString);
-    
+
     final sourceFile = File(filename);
     final sourceString = sourceFile.readAsStringSync();
     final newSource = createNewSource(sourceString, config);
