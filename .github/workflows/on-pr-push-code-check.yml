@@ -45,7 +45,8 @@ jobs:
           fatal-infos: true
       
       - name: Dart Code Metrics
-        uses: solid-software/dart-code-metrics-action@v5
+        # uses: solid-software/dart-code-metrics-action@v5
+        uses: danylo-safonov-solid/dart-code-metrics-action@c5492b1e9ecc9a1f1a5a0981cf8bacde118dc198
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           fatal_warnings: true
