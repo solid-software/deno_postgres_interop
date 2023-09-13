@@ -27,6 +27,7 @@ jobs:
 
       - name: Setup dart
         uses: dart-lang/setup-dart@v1
+        with:
           # https://github.com/invertase/dart_edge/issues/50
           # Tested with 3.0.6, but others should work too
           sdk: 3.0.0
