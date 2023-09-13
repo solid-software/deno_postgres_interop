@@ -46,11 +46,12 @@ jobs:
       
       - name: Dart Code Metrics
         # uses: solid-software/dart-code-metrics-action@v5
-        uses: danylo-safonov-solid/dart-code-metrics-action@8b2008387123fb34450d20cf2ec01fa2a9f6223e
+        uses: danylo-safonov-solid/dart-code-metrics-action@4f9d94bee90dbe82ab62a7caff4c875c3c7782e9
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           fatal_warnings: true
           fatal_style: true
+          flutter_version: 3.10.6
 
       - name: Check formatting
         run: dart format . --set-exit-if-changed
