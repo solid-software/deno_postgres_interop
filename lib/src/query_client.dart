@@ -26,12 +26,6 @@ extension QueryClientProps on QueryClient {
         [
           name,
           if (options != null) options,
-          // jsify({
-          //   if (options.isolationLevel != null)
-          //     'isolation_level': options.isolationLevel?.name,
-          //   if (options.isReadOnly != null) 'read_only': options.isReadOnly,
-          //   if (options.snapshot != null) 'snapshot': options.snapshot,
-          // }),
         ],
       );
 
