@@ -46,7 +46,7 @@ jobs:
       
       - name: Dart Code Metrics
         # uses: solid-software/dart-code-metrics-action@v5
-        uses: danylo-safonov-solid/dart-code-metrics-action@4d6fe0ae1e8d98f392fd3c4e5133a24e311c5c93
+        uses: danylo-safonov-solid/dart-code-metrics-action@897a72a57f186bf52c09ad25d07f437f4c789d4a
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           fatal_warnings: true
