@@ -1,6 +1,8 @@
 import 'dart:js_interop';
 import 'dart:js_util';
 
+import 'package:deno_postgres_interop/src/isolation_level.dart';
+
 /// [postgres@v0.17.0/TransactionOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=TransactionOptions)
 @JS()
 class TransactionOptions {
@@ -20,6 +22,7 @@ class TransactionOptions {
       }) as TransactionOptions;
 }
 
+/// [postgres@v0.17.0/TransactionOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=TransactionOptions)
 extension TransactionOptionsProps on TransactionOptions {
   IsolationLevel? get isolationLevel {
     final jsProperty = getProperty<String?>(this, 'isolation_level');
@@ -28,13 +31,4 @@ extension TransactionOptionsProps on TransactionOptions {
   }
 
   bool? get isReadOnly => getProperty(this, 'read_only');
-}
-
-enum IsolationLevel {
-  readCommited,
-  repeatableRead,
-  serializable;
-
-  static IsolationLevel parse(String string) =>
-      values.firstWhere((e) => e.name == string);
 }
