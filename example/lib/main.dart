@@ -22,8 +22,9 @@ Future<Response> fetch(Request _) async {
 Future<QueryObjectResult<dynamic>> transaction(Transaction transaction) async {
   await transaction.queryObject(
     'UPDATE public."User" '
-    "SET username='user${transaction.hashCode}' "
+    r'SET username=$1 '
     "WHERE last_name='user'",
+    ["'user${transaction.hashCode}'"],
   );
   await Future.delayed(const Duration(seconds: 10));
 

@@ -1,6 +1,7 @@
 import 'dart:js_interop';
 import 'dart:js_util';
 
+import 'package:deno_postgres_interop/src/query_object.dart';
 import 'package:deno_postgres_interop/src/query_object_result.dart';
 import 'package:deno_postgres_interop/src/transaction.dart';
 import 'package:deno_postgres_interop/src/transaction_options.dart';
@@ -46,9 +47,9 @@ extension QueryClientProps on QueryClient {
   }
 
   /// [postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_0).
-  Future<QueryObjectResult<T>> queryObject<T>(String query) => callFutureMethod(
-        this,
-        'queryObject',
-        [query],
-      );
+  Future<QueryObjectResult<T>> queryObject<T>(
+    String query, [
+    QueryArguments? arguments,
+  ]) =>
+      queryObjectCommon(this, query, arguments);
 }
