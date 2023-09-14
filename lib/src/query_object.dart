@@ -2,7 +2,7 @@ import 'package:deno_postgres_interop/deno_postgres_interop.dart';
 import 'package:deno_postgres_interop/src/util.dart';
 
 /// [postgres@v0.17.0/QueryArguments](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryArguments)
-typedef QueryArguments = Object?;
+typedef QueryArguments = Object;
 
 /// Common method between all Clients.
 ///
@@ -11,7 +11,7 @@ typedef QueryArguments = Object?;
 Future<QueryObjectResult<T>> queryObjectCommon<T>(
   Object queryable,
   String query, [
-  Object? arguments,
+  QueryArguments? arguments,
 ]) {
   final isCorrectType = arguments is List ||
       arguments is Map<String, dynamic> ||
