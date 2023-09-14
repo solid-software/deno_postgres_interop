@@ -3,16 +3,23 @@ import 'dart:js_util';
 
 import 'package:deno_postgres_interop/src/query_object.dart';
 import 'package:deno_postgres_interop/src/query_object_result.dart';
+import 'package:deno_postgres_interop/src/session.dart';
 import 'package:deno_postgres_interop/src/transaction.dart';
 import 'package:deno_postgres_interop/src/transaction_options.dart';
 import 'package:deno_postgres_interop/src/util.dart';
 
 /// [postgres@v0.17.0/QueryClient](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient).
 @JS()
-class QueryClient {}
+class QueryClient {
+  /// [postgres@v0.17.0/QueryClient/session](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#accessor_session)
+  external Session get session;
+}
 
 /// [postgres@v0.17.0/QueryClient](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient).
 extension QueryClientProps on QueryClient {
+  /// [postgres@v0.17.0/QueryClient/connected](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#accessor_connected)
+  bool get isConnected => getProperty(this, 'connected');
+
   /// [postgres@v0.17.0/QueryClient/connect](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_connect_0).
   Future<void> connect() => callFutureMethod(this, 'connect');
 
