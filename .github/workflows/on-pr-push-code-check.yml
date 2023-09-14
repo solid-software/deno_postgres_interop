@@ -27,6 +27,9 @@ jobs:
 
       - name: Setup dart
         uses: dart-lang/setup-dart@v1
+        with:
+          # https://github.com/invertase/dart_edge/issues/50
+          sdk: 3.0.0
 
       - name: Get main dependencies
         run: dart pub get
@@ -40,12 +43,14 @@ jobs:
         with:
           fatal-infos: true
       
-      - name: Dart Code Metrics
-        uses: solid-software/dart-code-metrics-action@v5
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          fatal_warnings: true
-          fatal_style: true
+      # https://github.com/invertase/dart_edge/issues/50
+      # dcm action uses stable, which is >=3.1 already, so it doesn't work
+      # - name: Dart Code Metrics
+      #   uses: solid-software/dart-code-metrics-action@v5
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     fatal_warnings: true
+      #     fatal_style: true
 
       - name: Check formatting
         run: dart format . --set-exit-if-changed
