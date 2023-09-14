@@ -19,7 +19,7 @@ extension TransactionProps on Transaction {
   /// [postgres@v0.17.0/Transaction/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryObject_0).
   Future<QueryObjectResult<T>> queryObject<T>(
     String query, [
-    QueryArguments arguments,
+    QueryArguments? arguments,
   ]) =>
       queryObjectCommon(this, query, arguments);
 }
