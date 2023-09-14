@@ -24,7 +24,7 @@ Future<QueryObjectResult<dynamic>> transaction(Transaction transaction) async {
     'UPDATE public."User" '
     r'SET username=$1 '
     "WHERE last_name='user'",
-    ["'user${transaction.hashCode}'" as dynamic],
+    ["'user${transaction.hashCode}'"],
   );
   await Future.delayed(const Duration(seconds: 10));
 

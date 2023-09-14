@@ -13,11 +13,17 @@ Future<QueryObjectResult<T>> queryObjectCommon<T>(
   String query, [
   Object? arguments,
 ]) {
-  final isCorrectArgumentsType = arguments is List<dynamic> ||
+  final isCorrectType = arguments is List ||
       arguments is Map<String, dynamic> ||
       arguments == null;
 
-  if (!isCorrectArgumentsType) throw 'Incorrect type for "arguments"';
+  if (!isCorrectType) {
+    throw ArgumentError.value(
+      arguments,
+      'arguments',
+      'Accepted types are List<any> and Map<String, any>.',
+    );
+  }
 
   return callFutureMethod(
     queryable,
