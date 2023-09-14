@@ -9,7 +9,11 @@ Future<Response> fetch(Request _) async {
 
   final client = Client(dbUrl);
   await client.connect();
-  final result = await client.transaction('transaction', transaction);
+  final result = await client.transaction(
+    'transaction',
+    transaction,
+    TransactionOptions(isolationLevel: IsolationLevel.serializable),
+  );
   await client.end();
 
   return Response(result.rows.map(rowToPrettyString).join('\n\n'));

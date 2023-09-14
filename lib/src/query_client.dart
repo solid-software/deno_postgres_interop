@@ -3,6 +3,7 @@ import 'dart:js_util';
 
 import 'package:deno_postgres_interop/src/query_object_result.dart';
 import 'package:deno_postgres_interop/src/transaction.dart';
+import 'package:deno_postgres_interop/src/transaction_options.dart';
 import 'package:deno_postgres_interop/src/util.dart';
 
 /// [postgres@v0.17.0/QueryClient](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient).
@@ -18,17 +19,25 @@ extension QueryClientProps on QueryClient {
   Future<void> end() => callFutureMethod(this, 'end');
 
   /// [postgres@v0.17.0/QueryClient/createTransaction](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_createTransaction_0).
-  Transaction createTransaction(String name) =>
-      callMethod(this, 'createTransaction', [name]);
+  Transaction createTransaction(String name, [TransactionOptions? options]) =>
+      callMethod(
+        this,
+        'createTransaction',
+        [
+          name,
+          if (options != null) options,
+        ],
+      );
 
   /// Convinience wrapper for [createTransaction],
   /// [TransactionProps.begin],
   /// and [TransactionProps.commit].
   Future<T> transaction<T>(
     String name,
-    Future<T> Function(Transaction) f,
-  ) async {
-    final transaction = createTransaction(name);
+    Future<T> Function(Transaction) f, [
+    TransactionOptions? options,
+  ]) async {
+    final transaction = createTransaction(name, options);
     await transaction.begin();
     final result = await f(transaction);
     await transaction.commit();
