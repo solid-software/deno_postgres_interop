@@ -44,17 +44,20 @@ extension QueryClientProps on QueryClient {
   /// [postgres@v0.17.0/QueryClient/end](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_end_0).
   Future<void> end() => callFutureMethod(this, 'end');
 
+  // TODO:
   // queryArray<T extends Array<unknown>>(
   //   query: string,
   //   args?: QueryArguments,
   // ): Promise<QueryArrayResult<T>>
   // https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_0
 
+  // TODO:
   // queryArray<T extends Array<unknown>>(
   //   config: QueryOptions
   // ): Promise<QueryArrayResult<T>>
   // https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_1
 
+  // TODO:
   // queryArray<T extends Array<unknown>>(
   //   strings: TemplateStringsArray,
   //   ...args: unknown[],
@@ -68,9 +71,11 @@ extension QueryClientProps on QueryClient {
   ]) =>
       queryObjectCommon(this, query, arguments);
 
+  // TODO:
   // queryObject<T>(config: QueryObjectOptions): Promise<QueryObjectResult<T>>
   // https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_1
 
+  // TODO:
   // queryObject<T>(
   //   query: TemplateStringsArray,
   //   ...args: unknown[],
