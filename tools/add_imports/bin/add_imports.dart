@@ -39,7 +39,7 @@ String createNewSource(String sourceString, Config config) {
       .toList();
 
   return [
-    ...[config.importStringForClass, (e) => 'self.$e = $e']
+    ...[config.importStringForClass, (e) => 'self.$e = $e;']
         .map(classes.map)
         .flattened,
     sourceString,
