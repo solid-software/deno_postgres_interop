@@ -1,4 +1,4 @@
-/// https://www.postgresql.org/docs/current/transaction-iso.html
+/// [postgresql/Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html)
 enum IsolationLevel {
   /// [postgresql/Transaction Isolation/Read Committed Isolation Level](https://www.postgresql.org/docs/current/transaction-iso.html#XACT-READ-COMMITTED)
   readCommitted,
