@@ -11,19 +11,19 @@ import 'package:deno_postgres_interop/src/util.dart';
 /// [postgres@v0.17.0/QueryClient](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient).
 @JS()
 class QueryClient {
-  /// [postgres@v0.17.0/QueryClient/session](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#accessor_session)
+  /// [postgres@v0.17.0/QueryClient/session](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#accessor_session).
   external Session get session;
 }
 
 /// [postgres@v0.17.0/QueryClient](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient).
 extension QueryClientProps on QueryClient {
-  /// [postgres@v0.17.0/QueryClient/connected](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#accessor_connected)
+  /// [postgres@v0.17.0/QueryClient/connected](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#accessor_connected).
   bool get isConnected => getProperty(this, 'connected');
 
-  /// [postgres@v0.17.0/QueryClient/closeConnection](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_closeConnection_0)
+  /// [postgres@v0.17.0/QueryClient/closeConnection](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_closeConnection_0).
   Future<void> closeConnection() => callFutureMethod(this, 'closeConnection');
 
-  /// [postgres@v0.17.0/QueryClient/resetSessionMetadata](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_resetSessionMetadata_0)
+  /// [postgres@v0.17.0/QueryClient/resetSessionMetadata](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_resetSessionMetadata_0).
   Future<void> resetSessionMetadata() =>
       callFutureMethod(this, 'resetSessionMetadata');
 

@@ -1,7 +1,7 @@
 import 'package:deno_postgres_interop/deno_postgres_interop.dart';
 import 'package:deno_postgres_interop/src/util.dart';
 
-/// [postgres@v0.17.0/QueryArguments](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryArguments)
+/// [postgres@v0.17.0/QueryArguments](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryArguments).
 typedef QueryArguments = Object;
 
 /// Common method between all Clients.
