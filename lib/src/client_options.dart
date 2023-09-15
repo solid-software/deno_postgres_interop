@@ -1,6 +1,7 @@
 import 'dart:js_interop';
 import 'dart:js_util';
 
+import 'package:deno_postgres_interop/src/partial_connection_options.dart';
 import 'package:deno_postgres_interop/src/transport.dart';
 
 /// [deno-postgres@v0.17.0/ClientOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions).
@@ -25,7 +26,7 @@ class ClientOptions {
 /// [deno-postgres@v0.17.0/ClientOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions).
 extension ClientOptionsProps on ClientOptions {
   /// [deno-postgres@v0.17.0/ClientOptions/connection](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_connection).
-  // external Partial<ConnectionOptions> get connection;
+  external PartialConnectionOptions get connection;
 
   /// [deno-postgres@v0.17.0/ClientOptions/host_type](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_host_type).
   Transport get hostType => Transport.parse(getProperty(this, 'host_type'));
