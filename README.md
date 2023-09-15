@@ -44,60 +44,49 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
 5. You can use the function now.
 
 ## Unimplemented
-- [ ] mod.ts
-  - [ ] Client
-    - [ ] constructor
-      - [ ] with no parameters
-      - [ ] `ClientOptions`
-  - [ ] ConnectionError
-  - [ ] Pool
-  - [ ] PoolClient
-  - [ ] PostgresError
-  - [ ] QueryClient
-    - [ ] queryArray
-      - [ ] `(query: string, args?: QueryArguments)`
-      - [ ] `(config: QueryOptions)`
-      - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
-    - [ ] queryObject
-      - [ ] `(config: QueryObjectOptions)`
-      - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
-  - [ ] Savepoint
-  - [ ] Transaction
-    - [ ] isolation_level
-    - [ ] savepoints
-    - [ ] getSavepoint
-    - [ ] getSavepoints
-    - [ ] getSnapshot
-    - [ ] queryArray
-      - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
-      - [ ] `(config: QueryOptions)`
-      - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
-    - [ ] queryObject
-      - [ ] `(config: QueryObjectOptions)`
-      - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
-    - [ ] rollback
-      - [ ] `(savepoint?: string | Savepoint)`
-      - [ ] `(options?: { savepoint?: string | Savepoint; })`
-      - [ ] `(options?: { chain?: boolean; })`
-    - [ ] savepoint
-  - [ ] TransactionError
-  - [ ] ClientOptions
-    - [ ] connection
-    - [ ] host_type
-    - [ ] options
-    - [ ] port
-    - [ ] tls
-  - [ ] ConnectionOptions
-  - [ ] QueryOobjectOptions
-  - [ ] QueryOptions
-  - [ ] Session
-   - [ ] current_transaction
-   - [ ] pid
-   - [ ] tls
-   - [ ] transport
-  - [ ] TLSOptions
-
-- [ ] deps.ts
-- client.ts - see mod.ts
-- pool.ts - see mod.ts
-
+- [ ] Client
+ - [ ] constructor
+   - [ ] with no parameters
+   - [ ] `ClientOptions`
+- [ ] ConnectionError
+- [ ] Pool
+- [ ] PoolClient
+- [ ] PostgresError
+- [ ] QueryClient
+ - [ ] queryArray
+   - [ ] `(query: string, args?: QueryArguments)`
+   - [ ] `(config: QueryOptions)`
+   - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
+ - [ ] queryObject
+   - [ ] `(config: QueryObjectOptions)`
+   - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
+- [ ] Savepoint
+- [ ] Transaction
+ - [ ] isolation_level
+ - [ ] savepoints
+ - [ ] getSavepoint
+ - [ ] getSavepoints
+ - [ ] getSnapshot
+ - [ ] queryArray
+   - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
+   - [ ] `(config: QueryOptions)`
+   - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
+ - [ ] queryObject
+   - [ ] `(config: QueryObjectOptions)`
+   - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
+ - [ ] rollback
+   - [ ] `(savepoint?: string | Savepoint)`
+   - [ ] `(options?: { savepoint?: string | Savepoint; })`
+   - [ ] `(options?: { chain?: boolean; })`
+ - [ ] savepoint
+- [ ] TransactionError
+- [ ] ClientOptions
+ - [ ] connection
+ - [ ] host_type
+ - [ ] options
+ - [ ] port
+ - [ ] tls
+- [ ] ConnectionOptions
+- [ ] QueryOobjectOptions
+- [ ] QueryOptions
+- [ ] TLSOptions
