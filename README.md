@@ -45,47 +45,47 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
 
 ## Unimplemented
 - [ ] Client
- - [ ] constructor
-   - [ ] with no parameters
-   - [ ] `ClientOptions`
+  - [ ] constructor
+    - [ ] with no parameters
+    - [ ] `ClientOptions`
 - [ ] ConnectionError
 - [ ] Pool
 - [ ] PoolClient
 - [ ] PostgresError
 - [ ] QueryClient
- - [ ] queryArray
-   - [ ] `(query: string, args?: QueryArguments)`
-   - [ ] `(config: QueryOptions)`
-   - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
- - [ ] queryObject
-   - [ ] `(config: QueryObjectOptions)`
-   - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
+  - [ ] queryArray
+    - [ ] `(query: string, args?: QueryArguments)`
+    - [ ] `(config: QueryOptions)`
+    - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
+  - [ ] queryObject
+    - [ ] `(config: QueryObjectOptions)`
+    - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
 - [ ] Savepoint
 - [ ] Transaction
- - [ ] isolation_level
- - [ ] savepoints
- - [ ] getSavepoint
- - [ ] getSavepoints
- - [ ] getSnapshot
- - [ ] queryArray
-   - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
-   - [ ] `(config: QueryOptions)`
-   - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
- - [ ] queryObject
-   - [ ] `(config: QueryObjectOptions)`
-   - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
- - [ ] rollback
-   - [ ] `(savepoint?: string | Savepoint)`
-   - [ ] `(options?: { savepoint?: string | Savepoint; })`
-   - [ ] `(options?: { chain?: boolean; })`
- - [ ] savepoint
+  - [ ] isolation_level
+  - [ ] savepoints
+  - [ ] getSavepoint
+  - [ ] getSavepoints
+  - [ ] getSnapshot
+  - [ ] queryArray
+    - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
+    - [ ] `(config: QueryOptions)`
+    - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
+  - [ ] queryObject
+    - [ ] `(config: QueryObjectOptions)`
+    - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
+  - [ ] rollback
+    - [ ] `(savepoint?: string | Savepoint)`
+    - [ ] `(options?: { savepoint?: string | Savepoint; })`
+    - [ ] `(options?: { chain?: boolean; })`
+  - [ ] savepoint
 - [ ] TransactionError
 - [ ] ClientOptions
- - [ ] connection
- - [ ] host_type
- - [ ] options
- - [ ] port
- - [ ] tls
+  - [ ] connection
+  - [ ] host_type
+  - [ ] options
+  - [ ] port
+  - [ ] tls
 - [ ] ConnectionOptions
 - [ ] QueryOobjectOptions
 - [ ] QueryOptions
