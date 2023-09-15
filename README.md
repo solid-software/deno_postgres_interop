@@ -43,39 +43,28 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
 
 5. You can use the function now.
 
-## Implemented classes/types/interfaces
+## Unimplemented
 - [ ] mod.ts
   - [ ] Client
     - [ ] constructor
       - [ ] with no parameters
-      - [x] `ConnectionString`
       - [ ] `ClientOptions`
   - [ ] ConnectionError
   - [ ] Pool
   - [ ] PoolClient
   - [ ] PostgresError
   - [ ] QueryClient
-    - [ ] connected
-    - [ ] session
-    - [ ] closeConnection
-    - [ ] resetSessionMetadata
-    - [ ] connect
-    - [ ] createTransaction
-    - [ ] end
     - [ ] queryArray
       - [ ] `(query: string, args?: QueryArguments)`
       - [ ] `(config: QueryOptions)`
       - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
     - [ ] queryObject
-      - [ ] `(query: string, args?: QueryArguments)`
       - [ ] `(config: QueryObjectOptions)`
       - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
   - [ ] Savepoint
   - [ ] Transaction
     - [ ] isolation_level
     - [ ] savepoints
-    - [ ] begin
-    - [ ] commit
     - [ ] getSavepoint
     - [ ] getSavepoints
     - [ ] getSnapshot
@@ -84,7 +73,6 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
       - [ ] `(config: QueryOptions)`
       - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
     - [ ] queryObject
-      - [ ] `(query: string, args?: QueryArguments)`
       - [ ] `(config: QueryObjectOptions)`
       - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
     - [ ] rollback
@@ -94,16 +82,11 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
     - [ ] savepoint
   - [ ] TransactionError
   - [ ] ClientOptions
-  - [ ] applicationName: string
     - [ ] connection
-    - [ ] database
-    - [ ] hostname
     - [ ] host_type
     - [ ] options
-    - [ ] password
     - [ ] port
     - [ ] tls
-    - [ ] user
   - [ ] ConnectionOptions
   - [ ] QueryOobjectOptions
   - [ ] QueryOptions
@@ -113,8 +96,6 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
    - [ ] tls
    - [ ] transport
   - [ ] TLSOptions
-  - [x] ConnectionString
-  - [x] TransactionOptions
 
 - [ ] deps.ts
 - client.ts - see mod.ts
