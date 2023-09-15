@@ -55,7 +55,6 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
   - [ ] rollback
     - [ ] `(options: { savepoint?: string | Savepoint; })`
     - [ ] `(options: { chain?: boolean; })`
-  - [ ] savepoint
 - [ ] TransactionError
 - [ ] ClientOptions
   - [ ] connection

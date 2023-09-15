@@ -84,4 +84,7 @@ extension TransactionProps on Transaction {
 
   Future<void> rollbackByName(String savepoint) =>
       callFutureMethod(this, 'rollback', [savepoint]);
+
+  Future<Savepoint> createSavepoint(String name) =>
+      callFutureMethod(this, 'savepoint', [name]);
 }
