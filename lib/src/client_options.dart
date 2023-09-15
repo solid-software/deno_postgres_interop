@@ -1,36 +1,39 @@
 import 'dart:js_interop';
 
-/// [deno-postgres@v0.17.0/ClientOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions)
+/// [deno-postgres@v0.17.0/ClientOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions).
 @JS()
 class ClientOptions {
-  /// [deno-postgres@v0.17.0/]()
+  /// [deno-postgres@v0.17.0/ClientOptions/applicationName](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_applicationName).
   external String get applicationName;
 
-  /// [deno-postgres@v0.17.0/]()
-  // external Partial<ConnectionOptions> get connection;
-
-  /// [deno-postgres@v0.17.0/]()
+  /// [deno-postgres@v0.17.0/ClientOptions/database](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_database).
   external String get database;
 
-  /// [deno-postgres@v0.17.0/]()
+  /// [deno-postgres@v0.17.0/ClientOptions/hostname](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_hostname).
   external String get hostname;
 
-  // TODO: convert
-  /// [deno-postgres@v0.17.0/]()
-  // external Transport get host_type;
-
-  /// [deno-postgres@v0.17.0/]()
-  // external String | Record<string, string> get options;
-
-  /// [deno-postgres@v0.17.0/]()
+  /// [deno-postgres@v0.17.0/ClientOptions/password](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_password).
   external String get password;
 
-  /// [deno-postgres@v0.17.0/]()
+  /// [deno-postgres@v0.17.0/ClientOptions/user](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_user).
+  external String get user;
+}
+
+/// [deno-postgres@v0.17.0/ClientOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions).
+extension ClientOptionsProps on ClientOptions {
+  /// [deno-postgres@v0.17.0/ClientOptions/connection](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_connection).
+  // external Partial<ConnectionOptions> get connection;
+
+  // TODO: convert
+  /// [deno-postgres@v0.17.0/ClientOptions/host_type](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_host_type).
+  // external Transport get host_type;
+
+  /// [deno-postgres@v0.17.0/ClientOptions/options](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_options).
+  // external String | Record<string, string> get options;
+
+  /// [deno-postgres@v0.17.0/ClientOptions/port](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_port).
   // external String | number get port;
 
-  /// [deno-postgres@v0.17.0/]()
+  /// [deno-postgres@v0.17.0/ClientOptions/tls](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_tls).
   // external Partial<TLSOptions> get tls;
-
-  /// [deno-postgres@v0.17.0/]()
-  external String get user;
 }
