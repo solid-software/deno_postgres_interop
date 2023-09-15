@@ -53,13 +53,6 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
 - [ ] PoolClient
 - [ ] PostgresError
 - [ ] QueryClient
-  - [ ] queryArray
-    - [ ] `(query: string, args?: QueryArguments)`
-    - [ ] `(config: QueryOptions)`
-    - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
-  - [ ] queryObject
-    - [ ] `(config: QueryObjectOptions)`
-    - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
 - [ ] Savepoint
 - [ ] Transaction
   - [ ] isolation_level
@@ -67,13 +60,6 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
   - [ ] getSavepoint
   - [ ] getSavepoints
   - [ ] getSnapshot
-  - [ ] queryArray
-    - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
-    - [ ] `(config: QueryOptions)`
-    - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
-  - [ ] queryObject
-    - [ ] `(config: QueryObjectOptions)`
-    - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
   - [ ] rollback
     - [ ] `(savepoint?: string | Savepoint)`
     - [ ] `(options?: { savepoint?: string | Savepoint; })`
@@ -90,3 +76,12 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
 - [ ] QueryOobjectOptions
 - [ ] QueryOptions
 - [ ] TLSOptions
+
+Common for clients:
+  - [ ] queryArray
+    - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
+    - [ ] `(config: QueryOptions)`
+    - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
+  - [ ] queryObject
+    - [ ] `(config: QueryObjectOptions)`
+    - [ ] `(strings: TemplateStringsArray, ...args: unknown[])`
