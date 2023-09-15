@@ -2,6 +2,7 @@ import 'dart:js_interop';
 import 'dart:js_util';
 
 import 'package:deno_postgres_interop/src/partial_connection_options.dart';
+import 'package:deno_postgres_interop/src/partial_tls_options.dart';
 import 'package:deno_postgres_interop/src/transport.dart';
 
 /// [deno-postgres@v0.17.0/ClientOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions).
@@ -38,5 +39,5 @@ extension ClientOptionsProps on ClientOptions {
   // external String | number get port;
 
   /// [deno-postgres@v0.17.0/ClientOptions/tls](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_tls).
-  // external Partial<TLSOptions> get tls;
+  external PartialTLSOptions get tls;
 }
