@@ -51,15 +51,10 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
 - [ ] QueryClient
 - [ ] Savepoint
 - [ ] Transaction
-  - [ ] isolation_level
-  - [ ] savepoints
-  - [ ] getSavepoint
-  - [ ] getSavepoints
-  - [ ] getSnapshot
+  - [ ] constructor
   - [ ] rollback
-    - [ ] `(savepoint?: string | Savepoint)`
-    - [ ] `(options?: { savepoint?: string | Savepoint; })`
-    - [ ] `(options?: { chain?: boolean; })`
+    - [ ] `(options: { savepoint?: string | Savepoint; })`
+    - [ ] `(options: { chain?: boolean; })`
   - [ ] savepoint
 - [ ] TransactionError
 - [ ] ClientOptions

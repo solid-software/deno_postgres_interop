@@ -1,20 +1,54 @@
 import 'dart:js_interop';
+import 'dart:js_util';
 
+import 'package:deno_postgres_interop/src/isolation_level.dart';
 import 'package:deno_postgres_interop/src/query_object.dart';
 import 'package:deno_postgres_interop/src/query_object_result.dart';
+import 'package:deno_postgres_interop/src/savepoint.dart';
 import 'package:deno_postgres_interop/src/util.dart';
 
 /// [postgres@v0.17.0/Transaction](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction).
 @JS()
-class Transaction {}
+class Transaction {
+  external List<Savepoint> get savepoints;
+  external Savepoint? getSavepoint(String name);
+}
 
 /// [postgres@v0.17.0/Transaction](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction).
 extension TransactionProps on Transaction {
+  /// [postgres@v0.17.0/Transaction/isolation_level](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#accessor_isolation_level).
+  IsolationLevel get isolationLevel => getProperty(this, 'isolation_name');
+
   /// [postgres@v0.17.0/Transaction/begin](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_begin_0).
   Future<void> begin() => callFutureMethod(this, 'begin');
 
   /// [postgres@v0.17.0/Transaction/commit](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_commit_0).
   Future<void> commit() => callFutureMethod(this, 'commit');
+
+  List<String> getActiveSavepointsNames() =>
+      callMethod(this, 'getSavepoints', []);
+
+  Future<String> get snapshot => callFutureMethod(this, 'getSnapshot');
+
+  // TODO:
+  // queryArray<T extends Array<unknown>>(
+  //   query: string,
+  //   args?: QueryArguments,
+  // ): Promise<QueryArrayResult<T>>
+  // https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_0
+
+  // TODO:
+  // queryArray<T extends Array<unknown>>(
+  //   config: QueryOptions
+  // ): Promise<QueryArrayResult<T>>
+  // https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_1
+
+  // TODO:
+  // queryArray<T extends Array<unknown>>(
+  //   strings: TemplateStringsArray,
+  //   ...args: unknown[],
+  // ): Promise<QueryArrayResult<T>>
+  // https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_2
 
   /// [postgres@v0.17.0/Transaction/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryObject_0).
   Future<QueryObjectResult<T>> queryObject<T>(
@@ -22,4 +56,32 @@ extension TransactionProps on Transaction {
     QueryArguments? arguments,
   ]) =>
       queryObjectCommon(this, query, arguments);
+
+  // TODO:
+  // queryObject<T>(config: QueryObjectOptions): Promise<QueryObjectResult<T>>
+  // https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_1
+
+  // TODO:
+  // queryObject<T>(
+  //   query: TemplateStringsArray,
+  //   ...args: unknown[],
+  // ): Promise<QueryObjectResult<T>>
+  // https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_2
+
+  Future<void> rollback(Savepoint? savepoint) => callFutureMethod(
+        this,
+        'rollback',
+        [if (savepoint != null) savepoint],
+      );
+
+  // TODO:
+  // rollback(options?: { savepoint?: string | Savepoint; }): Promise<void>
+  // https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_rollback_1
+
+  // TODO:
+  // rollback(options?: { chain?: boolean; }): Promise<void>
+  // https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_rollback_2
+
+  Future<void> rollbackByName(String savepoint) =>
+      callFutureMethod(this, 'rollback', [savepoint]);
 }
