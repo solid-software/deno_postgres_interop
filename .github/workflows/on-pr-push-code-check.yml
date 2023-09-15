@@ -15,7 +15,7 @@ jobs:
         id: check_files
         uses: andstor/file-existence-action@v1
         with:
-          files: 'pubspec.yaml, tools/add_imports/pubspec.yaml'
+          files: 'pubspec.yaml'
 
       - name: Early exit
         if: steps.check_files.outputs.files_exists == 'false'
@@ -33,10 +33,6 @@ jobs:
 
       - name: Get main dependencies
         run: dart pub get
-
-      - name: Get add_imports dependencies
-        run: dart pub get
-        working-directory: tools/add_imports
 
       - name: Run static code analysis
         uses: invertase/github-action-dart-analyzer@v1

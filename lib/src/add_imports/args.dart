@@ -1,3 +1,6 @@
+// This is an internal implementation so it is okay here.
+// ignore_for_file: public_member_api_docs
+
 import 'package:args/args.dart';
 
 class Args {

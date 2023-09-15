@@ -1,9 +1,12 @@
+// This is a CLI tool so it is okay here.
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
-import 'package:add_imports/src/args.dart';
-import 'package:add_imports/src/config.dart';
 import 'package:args/args.dart';
 import 'package:collection/collection.dart';
+import 'package:deno_postgres_interop/src/add_imports/args.dart';
+import 'package:deno_postgres_interop/src/add_imports/config.dart';
 import 'package:yaml/yaml.dart';
 
 void main(List<String> arguments) {
