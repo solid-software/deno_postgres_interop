@@ -49,7 +49,6 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
 - [ ] PoolClient
 - [ ] PostgresError
 - [ ] QueryClient
-- [ ] Savepoint
 - [ ] Transaction
   - [ ] constructor
   - [ ] rollback

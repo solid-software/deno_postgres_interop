@@ -16,5 +16,5 @@ class Client extends QueryClient {
       callConstructor('Client', [config]);
 
   /// [deno-postgres@v0.17.0/Client/constructor](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Client#ctor_0).
-  factory Client.empty() => callConstructor('client', null);
+  factory Client.empty() => callConstructor('Client', null);
 }
