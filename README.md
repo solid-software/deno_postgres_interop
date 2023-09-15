@@ -44,10 +44,6 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
 5. You can use the function now.
 
 ## Unimplemented
-- [ ] Client
-  - [ ] constructor
-    - [ ] with no parameters
-    - [ ] `ClientOptions`
 - [ ] ConnectionError
 - [ ] Pool
 - [ ] PoolClient
