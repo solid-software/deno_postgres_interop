@@ -12,9 +12,6 @@ import 'package:deno_postgres_interop/src/uint_8_array.dart';
 
 /// [postgres@v0.17.0/QueryResult](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult).
 class QueryResult {
-  /// [postgres@v0.17.0/QueryResult/command](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#prop_command).
-  external CommandType get command;
-
   /// [postgres@v0.17.0/QueryResult/rowCount](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#prop_rowCount).
   external int? get rowCount;
 
@@ -38,4 +35,9 @@ class QueryResult {
 extension QueryResultProps on QueryResult {
   /// [postgres@v0.17.0/QueryResult/insertRow](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#method_insertRow_0).
   void insertRow(List<Uint8Array> row) => callMethod(this, 'insertRow', [row]);
+
+  /// [postgres@v0.17.0/QueryResult/command](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#prop_command).
+  CommandType get command => CommandType.parse(
+        getProperty(this, 'command'),
+      );
 }
