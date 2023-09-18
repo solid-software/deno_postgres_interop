@@ -16,7 +16,12 @@ Future<Response> fetch(Request _) async {
   );
   await client.end();
 
-  return Response(result.rows.map(rowToPrettyString).join('\n\n'));
+  return Response(
+    [
+      result.command,
+      ...result.rows.map(rowToPrettyString),
+    ].join('\n\n'),
+  );
 }
 
 Future<QueryObjectResult<dynamic>> transaction(Transaction transaction) async {

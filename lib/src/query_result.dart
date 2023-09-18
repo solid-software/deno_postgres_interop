@@ -21,6 +21,9 @@ class QueryResult {
   /// [postgres@v0.17.0/QueryResult/warnings](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#prop_warnings).
   external List<Notice> get warnings;
 
+  /// [postgres@v0.17.0/QueryResult/command](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#prop_command).
+  external CommandType get command;
+
   /// [postgres@v0.17.0/QueryResult/constructor](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#ctor_0).
   external factory QueryResult(Query<ResultType> query);
 
@@ -35,9 +38,4 @@ class QueryResult {
 extension QueryResultProps on QueryResult {
   /// [postgres@v0.17.0/QueryResult/insertRow](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#method_insertRow_0).
   void insertRow(List<Uint8Array> row) => callMethod(this, 'insertRow', [row]);
-
-  /// [postgres@v0.17.0/QueryResult/command](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#prop_command).
-  CommandType get command => CommandType.parse(
-        getProperty(this, 'command'),
-      );
 }
