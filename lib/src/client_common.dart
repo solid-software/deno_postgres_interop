@@ -11,6 +11,7 @@ class ClientCommon {
   /// [postgres@v0.17.0/Transaction/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryArray_0).
   /// [postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_0).
   static Future<QueryArrayResult<T>> queryArray<T>(
+    Object queryable,
     String query, [
     QueryArguments? args,
   ]) =>
@@ -19,6 +20,7 @@ class ClientCommon {
   /// [postgres@v0.17.0/Transaction/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryArray_1).
   /// [postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_1).
   static Future<QueryArrayResult<T>> queryArrayWithOptions<T>(
+    Object queryable,
     QueryObjectOptions config,
   ) =>
       throw UnimplementedError(); // TODO:
@@ -67,6 +69,7 @@ class ClientCommon {
   /// [postgres@v0.17.0/Transaction/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryObject_1).
   /// [postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_1).
   static Future<QueryObjectResult<T>> queryObjectWithOptions<T>(
+    Object queryable,
     QueryObjectOptions config,
   ) =>
       throw UnimplementedError(); // TODO:

@@ -53,13 +53,13 @@ extension QueryClientProps on QueryClient {
     String query, [
     QueryArguments? args,
   ]) =>
-      ClientCommon.queryArray(query, args);
+      ClientCommon.queryArray(this, query, args);
 
   /// [postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_1).
   Future<QueryArrayResult<T>> queryArrayWithOptions<T>(
     QueryObjectOptions config,
   ) =>
-      ClientCommon.queryArrayWithOptions(config);
+      ClientCommon.queryArrayWithOptions(this, config);
 
   /// [postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_0).
   Future<QueryObjectResult<T>> queryObject<T>(
@@ -72,5 +72,5 @@ extension QueryClientProps on QueryClient {
   Future<QueryObjectResult<T>> queryObjectWithOptions<T>(
     QueryObjectOptions config,
   ) =>
-      ClientCommon.queryObjectWithOptions(config);
+      ClientCommon.queryObjectWithOptions(this, config);
 }
