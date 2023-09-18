@@ -19,14 +19,14 @@ extension TransactionProps on Transaction {
   Future<void> commit() => callFutureMethod(this, 'commit');
 
   /// [postgres@v0.17.0/Transaction/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryArray_0).
-  Future<QueryArrayResult<T>> queryArray<T>(
+  Future<QueryArrayResult<T>> queryArray<T extends List<dynamic>>(
     String query, [
     QueryArguments? args,
   ]) =>
       ClientCommon.queryArray(this, query, args);
 
   /// [postgres@v0.17.0/Transaction/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryArray_1).
-  Future<QueryArrayResult<T>> queryArrayWithOptions<T>(
+  Future<QueryArrayResult<T>> queryArrayWithOptions<T extends List<dynamic>>(
     QueryObjectOptions config,
   ) =>
       ClientCommon.queryArrayWithOptions(this, config);
