@@ -4,7 +4,6 @@ import 'dart:js_util';
 import 'package:deno_postgres_interop/src/command_type.dart';
 import 'package:deno_postgres_interop/src/notice.dart';
 import 'package:deno_postgres_interop/src/query.dart';
-import 'package:deno_postgres_interop/src/result_type.dart';
 import 'package:deno_postgres_interop/src/row_description.dart';
 
 /// [deno-postgres@v0.17.0/QueryResult](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult).
@@ -20,7 +19,10 @@ class QueryResult {
   external List<Notice> get warnings;
 
   /// [deno-postgres@v0.17.0/QueryResult/constructor](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#ctor_0).
-  external factory QueryResult(Query<ResultType> query);
+  external Query get query;
+
+  /// [deno-postgres@v0.17.0/QueryResult/constructor](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#ctor_0).
+  external factory QueryResult(Query query);
 
   /// [deno-postgres@v0.17.0/QueryResult/handleCommandComplete](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#method_handleCommandComplete_0).
   external void handleCommandComplete(String commandTag);
