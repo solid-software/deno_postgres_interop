@@ -1,0 +1,1 @@
+class Query<T> {}
