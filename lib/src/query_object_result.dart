@@ -1,7 +1,9 @@
 import 'dart:js_interop';
 import 'dart:js_util';
 
+import 'package:deno_postgres_interop/src/query.dart';
 import 'package:deno_postgres_interop/src/query_result.dart';
+import 'package:deno_postgres_interop/src/result_type.dart';
 
 /// [postgres@v0.17.0/QueryObjectResult](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryObjectResult).
 @JS()

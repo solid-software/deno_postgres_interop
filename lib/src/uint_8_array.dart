@@ -1,0 +1,1 @@
+class Uint8Array {}
