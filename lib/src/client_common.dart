@@ -10,7 +10,7 @@ typedef QueryArguments = Object;
 class ClientCommon {
   /// [postgres@v0.17.0/Transaction/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryArray_0).
   /// [postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_0).
-  static Future<QueryArrayResult<T>> queryArray<T>(
+  static Future<QueryArrayResult<T>> queryArray<T extends List<dynamic>>(
     Object queryable,
     String query, [
     QueryArguments? args,
@@ -19,11 +19,12 @@ class ClientCommon {
 
   /// [postgres@v0.17.0/Transaction/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryArray_1).
   /// [postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_1).
-  static Future<QueryArrayResult<T>> queryArrayWithOptions<T>(
+  static Future<QueryArrayResult<T>>
+      queryArrayWithOptions<T extends List<dynamic>>(
     Object queryable,
     QueryObjectOptions config,
   ) =>
-      throw UnimplementedError(); // TODO:
+          throw UnimplementedError(); // TODO:
 
   // This one won't be implemented because it doesn't make much sense for dart,
   // the query here is of type TemplateStringsArray which is used in
