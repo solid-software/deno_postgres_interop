@@ -1,36 +1,49 @@
 import 'dart:js_interop';
+import 'dart:js_util';
 
+import 'package:deno_postgres_interop/src/query_object.dart';
 import 'package:deno_postgres_interop/src/result_type.dart';
 
 /// [deno-postgres@v0.17.0/Query](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query).
 @JS()
 class Query<T extends ResultType> {
-//   new
-// Query(config: QueryObjectOptions, result_type: T)
+  /// [deno-postgres@v0.17.0/Query/args](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query#prop_args).
+  external List<EncodedArg> args;
 
-// new
-// Query(
-// text: string,
-// result_type: T,
-// args?: QueryArguments,
-// )
+  /// [deno-postgres@v0.17.0/Query/args](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query#prop_fields).
+  external List<String>? get fields;
 
-// new
-// Query(
-// config_or_text: string | QueryObjectOptions,
-// result_type: T,
-// args?: QueryArguments,
-// )
+  /// [deno-postgres@v0.17.0/Query/args](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query#prop_text).
+  external String get text;
 
-// args: EncodedArg[]
+  /// [deno-postgres@v0.17.0/Query/constructor](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query#ctor_0).
+  /// [deno-postgres@v0.17.0/Query/constructor](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query#ctor_2).
+  factory Query.withConfig({
+    required QueryObjectOptions config,
+    required T resultType,
+    QueryArguments? args,
+  }) =>
+      callConstructor('Query', [config, resultType, args]) as Query<T>;
 
-// optional
-// camelcase: boolean
-
-// optional
-// fields: string[]
-
-// result_type: ResultType
-
-// text: string
+  /// [deno-postgres@v0.17.0/Query/constructor](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query#ctor_1).
+  /// [deno-postgres@v0.17.0/Query/constructor](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query#ctor_2).
+  factory Query.withArgs({
+    required String text,
+    required T resultType,
+    QueryArguments? args,
+  }) =>
+      callConstructor('Query', [text, resultType, args]) as Query<T>;
 }
+
+/// [deno-postgres@v0.17.0/Query](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query).
+extension QueryProps<T extends ResultType> on Query<T> {
+  /// [deno-postgres@v0.17.0/Query/args](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query#prop_result_type).
+  ResultType get resultType => getProperty(this, 'result_type');
+
+  /// [deno-postgres@v0.17.0/Query/args](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query#prop_camelcase).
+  bool? get isCamelCase => getProperty(this, 'camelcase');
+}
+
+class QueryObjectOptions {}
+
+class EncodedArg {}
