@@ -11,7 +11,7 @@ class QueryObjectResult<T> extends QueryResult {
   external List<String>? get columns;
 
   /// [deno-postgres@v0.17.0/QueryResult/constructor](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#ctor_0).
-  external factory QueryObjectResult(Query<dynamic> query);
+  external factory QueryObjectResult(Query query);
 }
 
 /// [deno-postgres@v0.17.0/QueryObjectResult](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryObjectResult).

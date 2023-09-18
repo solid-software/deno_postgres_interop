@@ -19,6 +19,7 @@ Future<Response> fetch(Request _) async {
   return Response(
     [
       result.command == CommandType.select,
+      result.query.resultType,
       ...result.rows.map(rowToPrettyString),
     ].join('\n\n'),
   );
