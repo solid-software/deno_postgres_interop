@@ -1,9 +1,11 @@
 import 'dart:js_interop';
 import 'dart:js_util';
 
+import 'package:deno_postgres_interop/src/query_result.dart';
+
 /// [postgres@v0.17.0/QueryObjectResult](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryObjectResult).
 @JS()
-class QueryObjectResult<T> {
+class QueryObjectResult<T> extends QueryResult {
   /// [postgres@v0.17.0/QueryObjectResult/columns](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryObjectResult#prop_columns).
   external List<String>? get columns;
 }

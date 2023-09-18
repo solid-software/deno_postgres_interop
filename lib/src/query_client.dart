@@ -2,7 +2,7 @@ import 'dart:js_interop';
 import 'dart:js_util';
 
 import 'package:deno_postgres_interop/src/client_common.dart';
-import 'package:deno_postgres_interop/src/query_object.dart';
+import 'package:deno_postgres_interop/src/query_array_result.dart';
 import 'package:deno_postgres_interop/src/query_object_options.dart';
 import 'package:deno_postgres_interop/src/query_object_result.dart';
 import 'package:deno_postgres_interop/src/transaction.dart';
@@ -48,25 +48,18 @@ extension QueryClientProps on QueryClient {
     return result;
   }
 
-  // TODO:
-  // queryArray<T extends Array<unknown>>(
-  //   query: string,
-  //   args?: QueryArguments,
-  // ): Promise<QueryArrayResult<T>>
-  // https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_0
+  /// [postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_0).
+  Future<QueryArrayResult<T>> queryArray<T>(
+    String query, [
+    QueryArguments? args,
+  ]) =>
+      ClientCommon.queryArray(query, args);
 
-  // TODO:
-  // queryArray<T extends Array<unknown>>(
-  //   config: QueryOptions
-  // ): Promise<QueryArrayResult<T>>
-  // https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_1
-
-  // TODO:
-  // queryArray<T extends Array<unknown>>(
-  //   strings: TemplateStringsArray,
-  //   ...args: unknown[],
-  // ): Promise<QueryArrayResult<T>>
-  // https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_2
+  /// [postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_1).
+  Future<QueryArrayResult<T>> queryArrayWithOptions<T>(
+    QueryObjectOptions config,
+  ) =>
+      ClientCommon.queryArrayWithOptions(config);
 
   /// [postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_0).
   Future<QueryObjectResult<T>> queryObject<T>(
