@@ -1,12 +1,12 @@
-/// [postgresql/Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html).
+/// [deno-postgres@v0.17.0/Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html).
 enum IsolationLevel {
-  /// [postgresql/Transaction Isolation/Read Committed Isolation Level](https://www.postgresql.org/docs/current/transaction-iso.html#XACT-READ-COMMITTED).
+  /// [deno-postgres@v0.17.0/Transaction Isolation/Read Committed Isolation Level](https://www.postgresql.org/docs/current/transaction-iso.html#XACT-READ-COMMITTED).
   readCommitted,
 
-  /// [postgresql/Transaction Isolation/Repeatable Read Isolation Level](https://www.postgresql.org/docs/current/transaction-iso.html#XACT-REPEATABLE-READ).
+  /// [deno-postgres@v0.17.0/Transaction Isolation/Repeatable Read Isolation Level](https://www.postgresql.org/docs/current/transaction-iso.html#XACT-REPEATABLE-READ).
   repeatableRead,
 
-  /// [postgresql/Transaction Isolation/Serializable Isolation Level](https://www.postgresql.org/docs/current/transaction-iso.html#XACT-SERIALIZABLE).
+  /// [deno-postgres@v0.17.0/Transaction Isolation/Serializable Isolation Level](https://www.postgresql.org/docs/current/transaction-iso.html#XACT-SERIALIZABLE).
   serializable;
 
   /// Parses a string containing an [IsolationLevel] literal into its instance.
