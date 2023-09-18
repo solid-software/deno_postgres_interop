@@ -1,7 +1,9 @@
 import 'dart:js_interop';
 import 'dart:js_util';
 
+import 'package:deno_postgres_interop/src/encoded_arg.dart';
 import 'package:deno_postgres_interop/src/query_object.dart';
+import 'package:deno_postgres_interop/src/query_object_options.dart';
 import 'package:deno_postgres_interop/src/result_type.dart';
 
 /// [deno-postgres@v0.17.0/Query](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query).
@@ -43,7 +45,3 @@ extension QueryProps<T extends ResultType> on Query<T> {
   /// [deno-postgres@v0.17.0/Query/args](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query#prop_camelcase).
   bool? get isCamelCase => getProperty(this, 'camelcase');
 }
-
-class QueryObjectOptions {}
-
-class EncodedArg {}
