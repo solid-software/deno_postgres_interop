@@ -2,8 +2,11 @@
 library;
 
 export 'src/client.dart';
+export 'src/command_type.dart';
 export 'src/isolation_level.dart';
+export 'src/query.dart';
 export 'src/query_client.dart';
 export 'src/query_object_result.dart';
+export 'src/query_result.dart';
 export 'src/transaction.dart';
 export 'src/transaction_options.dart';

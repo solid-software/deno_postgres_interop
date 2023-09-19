@@ -9,19 +9,19 @@ import 'package:deno_postgres_interop/src/transaction.dart';
 import 'package:deno_postgres_interop/src/transaction_options.dart';
 import 'package:deno_postgres_interop/src/util.dart';
 
-/// [postgres@v0.17.0/QueryClient](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient).
+/// [deno-postgres@v0.17.0/QueryClient](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient).
 @JS()
 class QueryClient {}
 
-/// [postgres@v0.17.0/QueryClient](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient).
+/// [deno-postgres@v0.17.0/QueryClient](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient).
 extension QueryClientProps on QueryClient {
-  /// [postgres@v0.17.0/QueryClient/connect](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_connect_0).
+  /// [deno-postgres@v0.17.0/QueryClient/connect](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_connect_0).
   Future<void> connect() => callFutureMethod(this, 'connect');
 
-  /// [postgres@v0.17.0/QueryClient/end](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_end_0).
+  /// [deno-postgres@v0.17.0/QueryClient/end](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_end_0).
   Future<void> end() => callFutureMethod(this, 'end');
 
-  /// [postgres@v0.17.0/QueryClient/createTransaction](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_createTransaction_0).
+  /// [deno-postgres@v0.17.0/QueryClient/createTransaction](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_createTransaction_0).
   Transaction createTransaction(String name, [TransactionOptions? options]) =>
       callMethod(
         this,
@@ -48,27 +48,27 @@ extension QueryClientProps on QueryClient {
     return result;
   }
 
-  /// [postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_0).
+  /// [deno-postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_0).
   Future<QueryArrayResult<T>> queryArray<T extends List<dynamic>>(
     String query, [
     QueryArguments? args,
   ]) =>
       ClientCommon.queryArray(this, query, args);
 
-  /// [postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_1).
+  /// [deno-postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_1).
   Future<QueryArrayResult<T>> queryArrayWithOptions<T extends List<dynamic>>(
     QueryObjectOptions config,
   ) =>
       ClientCommon.queryArrayWithOptions(this, config);
 
-  /// [postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_0).
+  /// [deno-postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_0).
   Future<QueryObjectResult<T>> queryObject<T>(
     String query, [
     QueryArguments? arguments,
   ]) =>
       ClientCommon.queryObject(this, query, arguments);
 
-  /// [postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_1).
+  /// [deno-postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_1).
   Future<QueryObjectResult<T>> queryObjectWithOptions<T>(
     QueryObjectOptions config,
   ) =>

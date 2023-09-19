@@ -3,13 +3,13 @@ import 'package:deno_postgres_interop/src/query_array_result.dart';
 import 'package:deno_postgres_interop/src/query_object_options.dart';
 import 'package:deno_postgres_interop/src/util.dart';
 
-/// [postgres@v0.17.0/QueryArguments](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryArguments).
+/// [deno-postgres@v0.17.0/QueryArguments](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryArguments).
 typedef QueryArguments = Object;
 
 /// This class hosts common interops for clients.
 class ClientCommon {
-  /// [postgres@v0.17.0/Transaction/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryArray_0).
-  /// [postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_0).
+  /// [deno-postgres@v0.17.0/Transaction/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryArray_0).
+  /// [deno-postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_0).
   static Future<QueryArrayResult<T>> queryArray<T extends List<dynamic>>(
     Object queryable,
     String query, [
@@ -17,8 +17,8 @@ class ClientCommon {
   ]) =>
       throw UnimplementedError(); // TODO:
 
-  /// [postgres@v0.17.0/Transaction/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryArray_1).
-  /// [postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_1).
+  /// [deno-postgres@v0.17.0/Transaction/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryArray_1).
+  /// [deno-postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_1).
   static Future<QueryArrayResult<T>>
       queryArrayWithOptions<T extends List<dynamic>>(
     Object queryable,
@@ -38,8 +38,8 @@ class ClientCommon {
   // ): Promise<QueryArrayResult<T>>
   // https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_2
 
-  /// [postgres@v0.17.0/Transaction/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryObject_0).
-  /// [postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_0).
+  /// [deno-postgres@v0.17.0/Transaction/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryObject_0).
+  /// [deno-postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_0).
   static Future<QueryObjectResult<T>> queryObject<T>(
     Object queryable,
     String query, [
@@ -67,8 +67,8 @@ class ClientCommon {
     );
   }
 
-  /// [postgres@v0.17.0/Transaction/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryObject_1).
-  /// [postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_1).
+  /// [deno-postgres@v0.17.0/Transaction/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryObject_1).
+  /// [deno-postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_1).
   static Future<QueryObjectResult<T>> queryObjectWithOptions<T>(
     Object queryable,
     QueryObjectOptions config,
@@ -81,7 +81,7 @@ class ClientCommon {
   //
   // [related issue](https://github.com/dart-lang/language/issues/1988).
   //
-  // [postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_2).
+  // [deno-postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_2).
   // Future<QueryObjectResult<T>> queryObjectWithOptions<T>(
   //   List<String> query,
   //   List args,
