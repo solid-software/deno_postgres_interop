@@ -1,6 +1,8 @@
+import 'dart:js_interop';
 import 'dart:js_util';
 
 /// [deno-postgres@v0.17.0/QueryObjectOptions](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryObjectOptions).
+@JS()
 class QueryObjectOptions {
   /// [deno-postgres@v0.17.0/QueryObjectOptions/fields](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryObjectOptions#prop_fields).
   external List<String>? get fields;

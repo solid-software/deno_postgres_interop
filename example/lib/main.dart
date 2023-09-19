@@ -18,6 +18,14 @@ Future<Response> fetch(Request _) async {
 
   return Response(
     [
+      'warnings = ${result.warnings}',
+      '''
+rowDescription =
+  columnCount = ${result.rowDescription?.columnCount}
+  columns =
+${result.rowDescription?.columns.map((e) => '    name = ${e.name}').join('\n')}
+      ''',
+      'rowCount = ${result.rowCount}',
       result.command == CommandType.select,
       result.query.resultType,
       ...result.rows.map(rowToPrettyString),
