@@ -27,6 +27,7 @@ ${result.rowDescription?.columns.map((e) => '    name = ${e.name}').join('\n')}
       ''',
       'rowCount = ${result.rowCount}',
       result.command == CommandType.select,
+      'warnings = ${result.warnings}',
       '''
 rowDescription =
   columnCount = ${result.rowDescription?.columnCount}
