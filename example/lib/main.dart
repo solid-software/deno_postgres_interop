@@ -16,7 +16,20 @@ Future<Response> fetch(Request _) async {
   );
   await client.end();
 
-  return Response(result.rows.map(rowToPrettyString).join('\n\n'));
+  return Response(
+    [
+      result.command == CommandType.select,
+      'warnings = ${result.warnings}',
+      '''
+rowDescription =
+  columnCount = ${result.rowDescription?.columnCount}
+  columns =
+${result.rowDescription?.columns.map((e) => '    name = ${e.name}').join('\n')}
+      ''',
+      result.query.resultType,
+      ...result.rows.map(rowToPrettyString),
+    ].join('\n\n'),
+  );
 }
 
 Future<QueryObjectResult<dynamic>> transaction(Transaction transaction) async {

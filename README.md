@@ -36,7 +36,7 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
 
 4. Add imports to generated file by calling the script:
    ```bash
-   dart run tools/add_imports/bin/add_imports.dart
+   dart run deno_postgres_interop:add_imports \
      --filename=example/functions/dart_edge/main.dart.js
    ```
    Note: your filename may differ from the example
