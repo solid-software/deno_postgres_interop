@@ -7,6 +7,7 @@ class ClientOptions {
   /// [deno-postgres@v0.17.0/ClientOptions/applicationName](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_applicationName).
   external String get applicationName;
 
+  // TODO:
   /// [deno-postgres@v0.17.0/ClientOptions/connection](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_connection).
   // external Partial<ConnectionOptions> get connection;
 
@@ -19,9 +20,7 @@ class ClientOptions {
   /// [deno-postgres@v0.17.0/ClientOptions/password](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_password).
   external String get password;
 
-  /// [deno-postgres@v0.17.0/ClientOptions/port](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_port).
-  //  external String | number get port;
-
+  // TODO:
   /// [deno-postgres@v0.17.0/ClientOptions/tls](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_tls).
   // external Partial<TLSOptions> get tls;
 
@@ -40,16 +39,33 @@ extension ClientOptionsProps on ClientOptions {
   String? get optionsString {
     final prop = getProperty(this, 'options');
 
-    return prop is! String ? null : prop;
+    return prop is String ? prop : null;
   }
 
   /// [deno-postgres@v0.17.0/ClientOptions/options](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_options).
   ///
   /// Either this or [optionsString] is null.
-  //  external Map<string, string>? get options;
   Map<String, String>? get optionsMap {
     final prop = getProperty(this, 'options');
 
     return prop is String ? null : prop as Map<String, String>;
+  }
+
+  /// [deno-postgres@v0.17.0/ClientOptions/port](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_port).
+  ///
+  /// Either this or [port] is null.
+  String? get portString {
+    final prop = getProperty(this, 'port');
+
+    return prop is String ? prop : null;
+  }
+
+  /// [deno-postgres@v0.17.0/ClientOptions/port](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_port).
+  ///
+  /// Either this or [portString] is null.
+  int? get port {
+    final prop = getProperty(this, 'port');
+
+    return prop is int ? prop : null;
   }
 }
