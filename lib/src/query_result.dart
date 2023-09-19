@@ -5,11 +5,9 @@ import 'package:deno_postgres_interop/src/command_type.dart';
 import 'package:deno_postgres_interop/src/notice.dart';
 import 'package:deno_postgres_interop/src/query.dart';
 import 'package:deno_postgres_interop/src/row_description.dart';
-import 'package:deno_postgres_interop/src/uint_8_array.dart';
-
-@JS()
 
 /// [deno-postgres@v0.17.0/QueryResult](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult).
+@JS()
 class QueryResult {
   /// [deno-postgres@v0.17.0/QueryResult/command](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#prop_command).
   external CommandType get command;
@@ -39,7 +37,7 @@ class QueryResult {
 /// [deno-postgres@v0.17.0/QueryResult](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult).
 extension QueryResultProps on QueryResult {
   /// [deno-postgres@v0.17.0/QueryResult/insertRow](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#method_insertRow_0).
-  void insertRow(List<Uint8Array> row) => callMethod(this, 'insertRow', [row]);
+  void insertRow(List<List<int>> row) => callMethod(this, 'insertRow', [row]);
 
   /// [deno-postgres@v0.17.0/QueryResult/command](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryResult#prop_command).
   CommandType get command => CommandType.parse(
