@@ -34,6 +34,32 @@ class ClientConfiguration {
 
   /// [deno-postgres@v0.17.0/ClientConfiguration/user](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ClientConfiguration#prop_user).
   external String get user;
+
+  /// [deno-postgres@v0.17.0/ClientConfiguration](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ClientConfiguration).
+  factory ClientConfiguration({
+    required String applicationName,
+    required ConnectionOptions connection,
+    required String database,
+    required String hostname,
+    required String options,
+    required int port,
+    required TLSOptions tls,
+    required String user,
+    required Transport hostType,
+    String? password,
+  }) =>
+      jsify({
+        'applicationName': applicationName,
+        'connection': connection,
+        'database': database,
+        'hostname': hostname,
+        'options': options,
+        if (password != null) 'password': password,
+        'port': port,
+        'tls': tls,
+        'user': user,
+        'hostType': hostType,
+      }) as ClientConfiguration;
 }
 
 /// [deno-postgres@v0.17.0/ClientConfiguration](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ClientConfiguration).
