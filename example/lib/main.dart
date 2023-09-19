@@ -18,6 +18,7 @@ Future<Response> fetch(Request _) async {
 
   return Response(
     [
+      result.command == CommandType.select,
       'warnings = ${result.warnings}',
       '''
 rowDescription =
