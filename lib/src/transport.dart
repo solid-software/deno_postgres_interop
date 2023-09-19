@@ -1,2 +1,2 @@
-// // "tcp" | "socket"
+/// "tcp" | "socket"
 class Transport {}
