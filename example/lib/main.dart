@@ -25,15 +25,6 @@ rowDescription =
   columns =
 ${result.rowDescription?.columns.map((e) => '    name = ${e.name}').join('\n')}
       ''',
-      'rowCount = ${result.rowCount}',
-      result.command == CommandType.select,
-      'warnings = ${result.warnings}',
-      '''
-rowDescription =
-  columnCount = ${result.rowDescription?.columnCount}
-  columns =
-${result.rowDescription?.columns.map((e) => '    name = ${e.name}').join('\n')}
-      ''',
       result.query.resultType,
       ...result.rows.map(rowToPrettyString),
     ].join('\n\n'),
