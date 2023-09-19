@@ -16,9 +16,6 @@ class ClientOptions {
   /// [deno-postgres@v0.17.0/ClientOptions/hostname](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_hostname).
   external String get hostname;
 
-  /// [deno-postgres@v0.17.0/ClientOptions/options](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_options).
-  //  external String | Record<string, string> get options;
-
   /// [deno-postgres@v0.17.0/ClientOptions/password](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_password).
   external String get password;
 
@@ -36,4 +33,23 @@ class ClientOptions {
 extension ClientOptionsProps on ClientOptions {
   /// [deno-postgres@v0.17.0/ClientOptions/host_type](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_host_type).
   Transport get hostType => getProperty(this, 'host_type');
+
+  /// [deno-postgres@v0.17.0/ClientOptions/options](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_options).
+  ///
+  /// Either this or [optionsMap] is null.
+  String? get optionsString {
+    final prop = getProperty(this, 'options');
+
+    return prop is! String ? null : prop;
+  }
+
+  /// [deno-postgres@v0.17.0/ClientOptions/options](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_options).
+  ///
+  /// Either this or [optionsString] is null.
+  //  external Map<string, string>? get options;
+  Map<String, String>? get optionsMap {
+    final prop = getProperty(this, 'options');
+
+    return prop is String ? null : prop as Map<String, String>;
+  }
 }

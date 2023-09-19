@@ -21,7 +21,7 @@ class ClientConfiguration {
   external String get hostname;
 
   /// [deno-postgres@v0.17.0/ClientConfiguration/options](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ClientConfiguration#prop_options).
-  // external Record<String, String> get options;
+  external Map<String, String> get options;
 
   /// [deno-postgres@v0.17.0/ClientConfiguration/password](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ClientConfiguration#prop_password).
   external String? get password;
