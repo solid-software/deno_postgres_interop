@@ -58,12 +58,12 @@ class ClientConfiguration {
         'port': port,
         'tls': tls,
         'user': user,
-        'hostType': hostType,
+        'hostType': hostType.name,
       }) as ClientConfiguration;
 }
 
 /// [deno-postgres@v0.17.0/ClientConfiguration](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ClientConfiguration).
 extension ClientConfigurationProps on ClientConfiguration {
   /// [deno-postgres@v0.17.0/ClientConfiguration/host_type](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ClientConfiguration#prop_host_type).
-  Transport get hostType => getProperty(this, 'host_type');
+  Transport get hostType => Transport.parse(getProperty(this, 'host_type'));
 }
