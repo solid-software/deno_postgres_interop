@@ -1,12 +1,9 @@
-/// This indicates the protocol used to connect to the database.
-///
-/// The two supported transports are TCP and Unix sockets.
-/// [source](https://deno.land/x/postgres@v0.17.0/client.ts?source=#L43)
+/// TCP | SOCKET.
 enum Transport {
-  /// TCP.
+  /// tcp.
   tcp,
 
-  /// Unix sockets.
+  /// socket.
   socket;
 
   /// Parses a string containing an [Transport] literal into its instance.

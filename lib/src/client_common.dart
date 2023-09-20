@@ -1,6 +1,6 @@
-import 'package:deno_postgres_interop/deno_postgres_interop.dart';
 import 'package:deno_postgres_interop/src/query_array_result.dart';
 import 'package:deno_postgres_interop/src/query_object_options.dart';
+import 'package:deno_postgres_interop/src/query_object_result.dart';
 import 'package:deno_postgres_interop/src/util.dart';
 
 /// [deno-postgres@v0.17.0/QueryArguments](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryArguments).
@@ -13,9 +13,9 @@ class ClientCommon {
   static Future<QueryArrayResult<T>> queryArray<T extends List<dynamic>>(
     Object queryable,
     String query, [
-    QueryArguments? args,
+    QueryArguments? arguments,
   ]) =>
-      throw UnimplementedError(); // TODO:
+      _query('queryArray', queryable, query, arguments);
 
   /// [deno-postgres@v0.17.0/Transaction/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryArray_1).
   /// [deno-postgres@v0.17.0/QueryClient/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryArray_1).
@@ -24,7 +24,7 @@ class ClientCommon {
     Object queryable,
     QueryObjectOptions config,
   ) =>
-          throw UnimplementedError(); // TODO:
+          callFutureMethod(queryable, 'queryArray', [config]);
 
   // This one won't be implemented because it doesn't make much sense for dart,
   // the query here is of type TemplateStringsArray which is used in
@@ -44,28 +44,8 @@ class ClientCommon {
     Object queryable,
     String query, [
     QueryArguments? arguments,
-  ]) {
-    final isCorrectType = arguments is List ||
-        arguments is Map<String, dynamic> ||
-        arguments == null;
-
-    if (!isCorrectType) {
-      throw ArgumentError.value(
-        arguments,
-        'arguments',
-        'Accepted types are List<any> and Map<String, any>.',
-      );
-    }
-
-    return callFutureMethod(
-      queryable,
-      'queryObject',
-      [
-        query,
-        if (arguments != null) arguments,
-      ],
-    );
-  }
+  ]) =>
+      _query('queryObject', queryable, query, arguments);
 
   /// [deno-postgres@v0.17.0/Transaction/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryObject_1).
   /// [deno-postgres@v0.17.0/QueryClient/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_queryObject_1).
@@ -73,7 +53,7 @@ class ClientCommon {
     Object queryable,
     QueryObjectOptions config,
   ) =>
-      throw UnimplementedError(); // TODO:
+      callFutureMethod(queryable, 'queryObject', [config]);
 
   // This one won't be implemented because it doesn't make much sense for dart,
   // the query here is of type TemplateStringsArray which is used in
@@ -87,4 +67,36 @@ class ClientCommon {
   //   List args,
   // ) =>
   //     throw UnimplementedError();
+
+  static Future<T> _query<T>(
+    String function,
+    Object queryable,
+    String query, [
+    QueryArguments? arguments,
+  ]) {
+    _assertQueryArgumentsOrNull(arguments);
+
+    return callFutureMethod(
+      queryable,
+      function,
+      [
+        query,
+        if (arguments != null) arguments,
+      ],
+    );
+  }
+}
+
+void _assertQueryArgumentsOrNull(QueryArguments? arguments) {
+  final isCorrectType = arguments is List ||
+      arguments is Map<String, dynamic> ||
+      arguments == null;
+
+  if (!isCorrectType) {
+    throw ArgumentError.value(
+      arguments,
+      'arguments',
+      'Accepted types are List<any> and Map<String, any>.',
+    );
+  }
 }
