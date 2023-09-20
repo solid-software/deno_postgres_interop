@@ -11,9 +11,9 @@ class PartialTLSOptions {
 
   /// constructor.
   PartialTLSOptions({
-    required this.isEnabled,
-    required this.isEnforced,
-    required this.caCertificates,
+    this.isEnabled,
+    this.isEnforced,
+    this.caCertificates,
   });
 
   /// used for interop.

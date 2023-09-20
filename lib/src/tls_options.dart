@@ -21,7 +21,7 @@ class TLSOptions {
 }
 
 /// [deno-postgres@v0.17.0/TLSOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=TLSOptions).
-class TLSOptionsProps {
+extension TLSOptionsProps on TLSOptions {
   /// [deno-postgres@v0.17.0/TLSOptions/enabled](https://deno.land/x/postgres@v0.17.0/mod.ts?s=TLSOptions#prop_enabled).
   bool get isEnabled => getProperty(this, 'isEnabled');
 

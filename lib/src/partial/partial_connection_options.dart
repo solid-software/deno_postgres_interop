@@ -15,9 +15,9 @@ class PartialConnectionOptions {
 
   /// constructor.
   PartialConnectionOptions({
-    required this.attempts,
-    required this.nextInterval,
-    required this.interval,
+    this.attempts,
+    this.nextInterval,
+    this.interval,
   }) : assert(interval == null || nextInterval == null);
 
   /// used for interop.
