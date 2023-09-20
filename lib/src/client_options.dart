@@ -1,3 +1,4 @@
+import 'dart:js_interop';
 import 'dart:js_util';
 
 import 'package:deno_postgres_interop/src/partial/partial_connection_options.dart';
@@ -5,6 +6,7 @@ import 'package:deno_postgres_interop/src/partial/partial_tls_options.dart';
 import 'package:deno_postgres_interop/src/transport.dart';
 
 /// [deno-postgres@v0.17.0/ClientOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions).
+@JS()
 class ClientOptions {
   /// [deno-postgres@v0.17.0/ClientOptions/applicationName](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_applicationName).
   external String? get applicationName;
@@ -20,6 +22,59 @@ class ClientOptions {
 
   /// [deno-postgres@v0.17.0/ClientOptions/user](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_applicationName/user).
   external String? get user;
+
+  /// [deno-postgres@v0.17.0/ClientOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions).
+  factory ClientOptions({
+    String? applicationName,
+    PartialConnectionOptions? connection,
+    String? database,
+    String? hostname,
+    Transport? hostType,
+    String? optionsString,
+    Map<String, String>? optionsMap,
+    String? password,
+    String? portString,
+    int? port,
+    PartialTLSOptions? tls,
+    String? user,
+  }) {
+    assert(optionsString == null || optionsMap == null);
+    assert(portString == null || port == null);
+
+    return jsify(
+      {
+        if (applicationName != null) 'applicationName': applicationName,
+        if (connection != null)
+          'connection': jsify({
+            if (connection.attempts != null) 'attempts': connection.attempts,
+            if (connection.nextInterval != null)
+              'interval': connection.nextInterval
+            else if (connection.interval != null)
+              'interval': connection.interval,
+          }),
+        if (database != null) 'database': database,
+        if (hostname != null) 'hostname': hostname,
+        if (hostType != null) 'host_type': hostType.name,
+        if (optionsString != null)
+          'options': optionsString
+        else if (optionsMap != null)
+          'options': jsify(optionsMap),
+        if (password != null) 'password': password,
+        if (portString != null)
+          'port': portString
+        else if (port != null)
+          'port': port,
+        if (tls != null)
+          'tls': jsify({
+            if (tls.isEnabled != null) 'enabled': tls.isEnabled,
+            if (tls.isEnforced != null) 'enforce': tls.isEnforced,
+            if (tls.caCertificates != null)
+              'caCertificates': tls.caCertificates,
+          }),
+        if (user != null) 'user': user,
+      },
+    ) as ClientOptions;
+  }
 }
 
 /// [deno-postgres@v0.17.0/ClientOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions).
@@ -91,7 +146,7 @@ extension ClientOptionsProps on ClientOptions {
     return PartialTLSOptions(
       caCertificates: map['caCertificates'] as List<String>?,
       isEnabled: map['enabled'] as bool?,
-      isTLSEnforced: map['enforced'] as bool?,
+      isEnforced: map['enforced'] as bool?,
     );
   }
 }
