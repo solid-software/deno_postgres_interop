@@ -44,14 +44,7 @@ class ClientOptions {
     return jsify(
       {
         if (applicationName != null) 'applicationName': applicationName,
-        if (connection != null)
-          'connection': jsify({
-            if (connection.attempts != null) 'attempts': connection.attempts,
-            if (connection.nextInterval != null)
-              'interval': connection.nextInterval
-            else if (connection.interval != null)
-              'interval': connection.interval,
-          }),
+        if (connection != null) 'connection': jsify(connection.asMap()),
         if (database != null) 'database': database,
         if (hostname != null) 'hostname': hostname,
         if (hostType != null) 'host_type': hostType.name,
@@ -64,13 +57,7 @@ class ClientOptions {
           'port': portString
         else if (port != null)
           'port': port,
-        if (tls != null)
-          'tls': jsify({
-            if (tls.isEnabled != null) 'enabled': tls.isEnabled,
-            if (tls.isEnforced != null) 'enforce': tls.isEnforced,
-            if (tls.caCertificates != null)
-              'caCertificates': tls.caCertificates,
-          }),
+        if (tls != null) 'tls': jsify(tls.asMap()),
         if (user != null) 'user': user,
       },
     ) as ClientOptions;

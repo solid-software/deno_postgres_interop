@@ -19,4 +19,15 @@ class PartialConnectionOptions {
     required this.nextInterval,
     required this.interval,
   }) : assert(interval == null || nextInterval == null);
+
+  /// used for jsify.
+  Map<String, dynamic> asMap() {
+    return {
+      if (attempts != null) 'attempts': attempts,
+      if (nextInterval != null)
+        'interval': nextInterval
+      else if (interval != null)
+        'interval': interval,
+    };
+  }
 }

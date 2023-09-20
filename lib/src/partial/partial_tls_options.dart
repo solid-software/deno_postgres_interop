@@ -15,4 +15,13 @@ class PartialTLSOptions {
     required this.isEnforced,
     required this.caCertificates,
   });
+
+  /// used for jsify.
+  Map<String, dynamic> asMap() {
+    return {
+      if (isEnabled != null) 'enabled': isEnabled,
+      if (isEnforced != null) 'enforce': isEnforced,
+      if (caCertificates != null) 'caCertificates': caCertificates,
+    };
+  }
 }
