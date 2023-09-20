@@ -44,12 +44,16 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
 5. You can use the function now.
 
 ## Unimplemented
-- [ ] ConnectionError
-- [ ] PostgresError
 - [ ] QueryClient
-- [ ] Transaction
+
+
+- Transaction
   - [ ] constructor
   - [ ] rollback
     - [ ] `(options: { savepoint?: string | Savepoint; })`
     - [ ] `(options: { chain?: boolean; })`
-- [ ] TransactionError
+
+- errors:
+  - [ ] TransactionError
+  - [ ] ConnectionError
+  - [ ] PostgresError
