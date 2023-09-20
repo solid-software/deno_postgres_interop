@@ -1,6 +1,7 @@
 import 'dart:js_interop';
 import 'dart:js_util';
 
+import 'package:deno_postgres_interop/src/encoded_arg.dart';
 import 'package:deno_postgres_interop/src/query_object.dart';
 import 'package:deno_postgres_interop/src/query_object_options.dart';
 import 'package:deno_postgres_interop/src/result_type.dart';
@@ -9,8 +10,7 @@ import 'package:deno_postgres_interop/src/result_type.dart';
 @JS()
 class Query {
   /// [deno-postgres@v0.17.0/Query/args](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query#prop_args).
-  /// null | string | Uint8Array
-  external List<dynamic> args;
+  external List<EncodedArg> args;
 
   /// [deno-postgres@v0.17.0/Query/args](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=Query#prop_fields).
   external List<String>? get fields;
