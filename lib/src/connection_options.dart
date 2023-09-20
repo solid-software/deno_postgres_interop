@@ -1,6 +1,8 @@
 import 'dart:js_interop';
 import 'dart:js_util';
 
+import 'package:deno_postgres_interop/src/partial/partial_connection_options.dart';
+
 /// [deno-postgres@v0.17.0/ConnectionOptions](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ConnectionOptions).
 @JS()
 class ConnectionOptions {
@@ -13,15 +15,13 @@ class ConnectionOptions {
     int Function(int previousInterval)? nextInterval,
     int? interval,
   }) {
-    assert(nextInterval == null || interval == null);
-
-    return jsify({
-      if (interval != null)
-        'interval': interval
-      else if (nextInterval != null)
-        'interval': nextInterval,
-      'attempts': attempts,
-    }) as ConnectionOptions;
+    return jsify(
+      PartialConnectionOptions(
+        attempts: attempts,
+        nextInterval: nextInterval,
+        interval: interval,
+      ).asMap(),
+    ) as ConnectionOptions;
   }
 }
 
