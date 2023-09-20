@@ -66,9 +66,9 @@ extension TransactionProps on Transaction {
   /// [deno-postgres@v0.17.0/Transaction/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryObject_0).
   Future<QueryObjectResult<T>> queryObject<T>(
     String query, [
-    QueryArguments? args,
+    QueryArguments? arguments,
   ]) =>
-      ClientCommon.queryObject(this, query, args);
+      ClientCommon.queryObject(this, query, arguments);
 
   /// [deno-postgres@v0.17.0/Transaction/queryObject](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryObject_1).
   Future<QueryObjectResult<T>> queryObjectWithOptions<T>(
