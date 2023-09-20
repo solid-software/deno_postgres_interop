@@ -16,8 +16,10 @@ class ConnectionOptions {
     assert(nextInterval == null || interval == null);
 
     return jsify({
-      if (interval != null) 'interval': interval,
-      if (nextInterval != null) 'interval': nextInterval,
+      if (interval != null)
+        'interval': interval
+      else if (nextInterval != null)
+        'interval': nextInterval,
       'attempts': attempts,
     }) as ConnectionOptions;
   }
