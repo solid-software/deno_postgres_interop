@@ -1,7 +1,6 @@
 import 'dart:js_interop';
 import 'dart:js_util';
 
-import 'package:deno_postgres_interop/deno_postgres_interop.dart';
 import 'package:deno_postgres_interop/src/client_options.dart';
 import 'package:deno_postgres_interop/src/query_client.dart';
 
