@@ -22,5 +22,5 @@ class QueryObjectOptions extends QueryOptions {
 /// [deno-postgres@v0.17.0/QueryObjectOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryObjectOptions).
 extension QueryObjectOptionsProps on QueryObjectOptions {
   /// [deno-postgres@v0.17.0/QueryObjectOptions/camelcase](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#prop_camelcase).
-  bool? get isCamelcase => getProperty(this, 'camelcase');
+  bool? get isCamelCase => getProperty(this, 'camelcase');
 }
