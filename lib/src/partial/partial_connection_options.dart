@@ -20,6 +20,19 @@ class PartialConnectionOptions {
     required this.interval,
   }) : assert(interval == null || nextInterval == null);
 
+  /// used for interop.
+  factory PartialConnectionOptions.fromMap(Map<dynamic, dynamic> map) {
+    final intervalProp = map['interval'];
+
+    return PartialConnectionOptions(
+      attempts: map['attempts'] as int?,
+      interval: intervalProp is int ? intervalProp : null,
+      nextInterval: intervalProp is! int
+          ? intervalProp as int Function(int previousInterval)?
+          : null,
+    );
+  }
+
   /// used for jsify.
   Map<String, dynamic> asMap() {
     return {

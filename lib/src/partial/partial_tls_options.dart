@@ -16,6 +16,12 @@ class PartialTLSOptions {
     required this.caCertificates,
   });
 
+  /// used for interop.
+  PartialTLSOptions.fromMap(Map<dynamic, dynamic> map)
+      : caCertificates = map['caCertificates'] as List<String>?,
+        isEnabled = map['enabled'] as bool?,
+        isEnforced = map['enforced'] as bool?;
+
   /// used for jsify.
   Map<String, dynamic> asMap() {
     return {

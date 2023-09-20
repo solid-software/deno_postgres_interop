@@ -110,17 +110,7 @@ extension ClientOptionsProps on ClientOptions {
     final map =
         dartify(getProperty(this, 'connection')) as Map<dynamic, dynamic>?;
 
-    if (map == null) return null;
-
-    final intervalProp = map['interval'];
-
-    return PartialConnectionOptions(
-      attempts: map['attempts'] as int?,
-      interval: intervalProp is int ? intervalProp : null,
-      nextInterval: intervalProp is! int
-          ? intervalProp as int Function(int previousInterval)?
-          : null,
-    );
+    return map == null ? null : PartialConnectionOptions.fromMap(map);
   }
 
   /// [deno-postgres@v0.17.0/ClientOptions/tls](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_tls).
