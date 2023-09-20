@@ -1,6 +1,6 @@
-import 'package:deno_postgres_interop/deno_postgres_interop.dart';
 import 'package:deno_postgres_interop/src/query_array_result.dart';
 import 'package:deno_postgres_interop/src/query_object_options.dart';
+import 'package:deno_postgres_interop/src/query_object_result.dart';
 import 'package:deno_postgres_interop/src/util.dart';
 
 /// [deno-postgres@v0.17.0/QueryArguments](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryArguments).
