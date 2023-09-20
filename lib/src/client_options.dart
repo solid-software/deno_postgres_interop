@@ -7,25 +7,25 @@ import 'package:deno_postgres_interop/src/transport.dart';
 /// [deno-postgres@v0.17.0/ClientOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions).
 class ClientOptions {
   /// [deno-postgres@v0.17.0/ClientOptions/applicationName](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_applicationName).
-  external String get applicationName;
+  external String? get applicationName;
 
   /// [deno-postgres@v0.17.0/ClientOptions/database](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_database).
-  external String get database;
+  external String? get database;
 
   /// [deno-postgres@v0.17.0/ClientOptions/hostname](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_hostname).
-  external String get hostname;
+  external String? get hostname;
 
   /// [deno-postgres@v0.17.0/ClientOptions/password](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_password).
-  external String get password;
+  external String? get password;
 
   /// [deno-postgres@v0.17.0/ClientOptions/user](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_applicationName/user).
-  external String get user;
+  external String? get user;
 }
 
 /// [deno-postgres@v0.17.0/ClientOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions).
 extension ClientOptionsProps on ClientOptions {
   /// [deno-postgres@v0.17.0/ClientOptions/host_type](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_host_type).
-  Transport get hostType => getProperty(this, 'host_type');
+  Transport get hostType => Transport.parse(getProperty(this, 'host_type'));
 
   /// [deno-postgres@v0.17.0/ClientOptions/options](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_options).
   ///
