@@ -1,15 +1,13 @@
 import 'dart:js_util';
 
+import 'package:deno_postgres_interop/src/partial/partial_connection_options.dart';
+import 'package:deno_postgres_interop/src/partial/partial_tls_options.dart';
 import 'package:deno_postgres_interop/src/transport.dart';
 
 /// [deno-postgres@v0.17.0/ClientOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions).
 class ClientOptions {
   /// [deno-postgres@v0.17.0/ClientOptions/applicationName](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_applicationName).
   external String get applicationName;
-
-  // TODO:
-  /// [deno-postgres@v0.17.0/ClientOptions/connection](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_connection).
-  // external Partial<ConnectionOptions> get connection;
 
   /// [deno-postgres@v0.17.0/ClientOptions/database](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_database).
   external String get database;
@@ -19,10 +17,6 @@ class ClientOptions {
 
   /// [deno-postgres@v0.17.0/ClientOptions/password](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_password).
   external String get password;
-
-  // TODO:
-  /// [deno-postgres@v0.17.0/ClientOptions/tls](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_tls).
-  // external Partial<TLSOptions> get tls;
 
   /// [deno-postgres@v0.17.0/ClientOptions/user](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_applicationName/user).
   external String get user;
@@ -67,5 +61,28 @@ extension ClientOptionsProps on ClientOptions {
     final prop = getProperty(this, 'port');
 
     return prop is int ? prop : null;
+  }
+
+  /// [deno-postgres@v0.17.0/ClientOptions/connection](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_connection).
+  PartialConnectionOptions? get connection {
+    final map =
+        dartify(getProperty(this, 'connection')) as Map<dynamic, dynamic>?;
+
+    if (map == null) return null;
+
+    final intervalProp = map['interval'];
+
+    return PartialConnectionOptions(
+      attempts: map['attempts'] as int?,
+      interval: intervalProp is int ? intervalProp : null,
+      nextInterval: intervalProp is! int
+          ? intervalProp as int Function(int previousInterval)?
+          : null,
+    );
+  }
+
+  /// [deno-postgres@v0.17.0/ClientOptions/tls](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_tls).
+  PartialTLSOptions get tls {
+    // TODO:
   }
 }
