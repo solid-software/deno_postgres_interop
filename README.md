@@ -45,8 +45,6 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
 
 ## Unimplemented
 - [ ] ConnectionError
-- [ ] Pool
-- [ ] PoolClient
 - [ ] PostgresError
 - [ ] QueryClient
 - [ ] Transaction
@@ -55,9 +53,6 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
     - [ ] `(options: { savepoint?: string | Savepoint; })`
     - [ ] `(options: { chain?: boolean; })`
 - [ ] TransactionError
-- [ ] ClientOptions
-  - [ ] options
-  - [ ] port
 - [ ] ConnectionOptions
 - [ ] QueryOobjectOptions
 - [ ] QueryOptions
