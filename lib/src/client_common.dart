@@ -24,7 +24,7 @@ class ClientCommon {
     Object queryable,
     QueryObjectOptions config,
   ) =>
-          throw UnimplementedError(); // TODO:
+          callFutureMethod(queryable, 'queryArray', [config]);
 
   // This one won't be implemented because it doesn't make much sense for dart,
   // the query here is of type TemplateStringsArray which is used in
@@ -53,7 +53,7 @@ class ClientCommon {
     Object queryable,
     QueryObjectOptions config,
   ) =>
-      throw UnimplementedError(); // TODO:
+      callFutureMethod(queryable, 'queryObject', [config]);
 
   // This one won't be implemented because it doesn't make much sense for dart,
   // the query here is of type TemplateStringsArray which is used in
