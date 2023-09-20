@@ -82,7 +82,16 @@ extension ClientOptionsProps on ClientOptions {
   }
 
   /// [deno-postgres@v0.17.0/ClientOptions/tls](https://deno.land/x/postgres@v0.17.0/mod.ts?s=ClientOptions#prop_tls).
-  PartialTLSOptions get tls {
-    // TODO:
+  PartialTLSOptions? get tls {
+    final map =
+        dartify(getProperty(this, 'connection')) as Map<dynamic, dynamic>?;
+
+    if (map == null) return null;
+
+    return PartialTLSOptions(
+      caCertificates: map['caCertificates'] as List<String>?,
+      isEnabled: map['enabled'] as bool?,
+      isTLSEnforced: map['enforced'] as bool?,
+    );
   }
 }
