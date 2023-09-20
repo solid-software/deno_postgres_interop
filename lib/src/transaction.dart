@@ -12,7 +12,10 @@ import 'package:deno_postgres_interop/src/util.dart';
 /// [deno-postgres@v0.17.0/Transaction](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction).
 @JS()
 class Transaction {
+  /// [deno-postgres@v0.17.0/Transaction/savepoints](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#accessor_savepoints).
   external List<Savepoint> get savepoints;
+
+  /// [deno-postgres@v0.17.0/Transaction/getSavepoint](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_getSavepoint_0).
   external Savepoint? getSavepoint(String name);
 }
 
@@ -27,9 +30,11 @@ extension TransactionProps on Transaction {
   /// [deno-postgres@v0.17.0/Transaction/commit](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_commit_0).
   Future<void> commit() => callFutureMethod(this, 'commit');
 
+  /// [deno-postgres@v0.17.0/Transaction/getSavepoints](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_getSavepoints_0).
   List<String> getActiveSavepointsNames() =>
       callMethod(this, 'getSavepoints', []);
 
+  /// [deno-postgres@v0.17.0/Transaction/getSnapshot](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_getSnapshot_0).
   Future<String> get snapshot => callFutureMethod(this, 'getSnapshot');
 
   /// [deno-postgres@v0.17.0/Transaction/queryArray](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_queryArray_0).
