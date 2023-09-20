@@ -53,10 +53,6 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
     - [ ] `(options: { savepoint?: string | Savepoint; })`
     - [ ] `(options: { chain?: boolean; })`
 - [ ] TransactionError
-- [ ] ConnectionOptions
-- [ ] QueryOobjectOptions
-- [ ] QueryOptions
-- [ ] TLSOptions
 
 Common for clients:
   - [ ] queryArray
