@@ -1,3 +1,4 @@
+import 'dart:js_interop';
 import 'dart:js_util';
 
 import 'package:deno_postgres_interop/src/client_options.dart';
@@ -6,6 +7,7 @@ import 'package:deno_postgres_interop/src/undefined.dart';
 import 'package:deno_postgres_interop/src/util.dart';
 
 /// [deno-postgres@v0.17.0/Pool](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Pool).
+@JS()
 class Pool {
   /// [deno-postgres@v0.17.0/Pool/constructor](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Pool#ctor_0).
   factory Pool({
