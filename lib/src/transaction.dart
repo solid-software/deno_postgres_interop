@@ -47,13 +47,20 @@ class Transaction {
 /// [deno-postgres@v0.17.0/Transaction](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction).
 extension TransactionProps on Transaction {
   /// [deno-postgres@v0.17.0/Transaction/isolation_level](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#accessor_isolation_level).
-  IsolationLevel get isolationLevel => getProperty(this, 'isolation_name');
+  IsolationLevel get isolationLevel =>
+      IsolationLevel.parse(getProperty(this, 'isolation_name'));
 
   /// [deno-postgres@v0.17.0/Transaction/begin](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_begin_0).
   Future<void> begin() => callFutureMethod(this, 'begin');
 
   /// [deno-postgres@v0.17.0/Transaction/commit](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_commit_0).
-  Future<void> commit() => callFutureMethod(this, 'commit');
+  Future<void> commit({bool? chain}) => callFutureMethod(
+        this,
+        'commit',
+        [
+          if (chain != null) {'chain': chain},
+        ],
+      );
 
   /// [deno-postgres@v0.17.0/Transaction/getSavepoints](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_getSavepoints_0).
   List<String> getActiveSavepointsNames() =>
