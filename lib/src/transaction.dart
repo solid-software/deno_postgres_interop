@@ -3,10 +3,16 @@ import 'dart:js_util';
 
 import 'package:deno_postgres_interop/src/client_common.dart';
 import 'package:deno_postgres_interop/src/isolation_level.dart';
+import 'package:deno_postgres_interop/src/promise.dart';
+import 'package:deno_postgres_interop/src/query.dart';
 import 'package:deno_postgres_interop/src/query_array_result.dart';
+import 'package:deno_postgres_interop/src/query_client.dart';
 import 'package:deno_postgres_interop/src/query_object_options.dart';
 import 'package:deno_postgres_interop/src/query_object_result.dart';
+import 'package:deno_postgres_interop/src/query_result.dart';
 import 'package:deno_postgres_interop/src/savepoint.dart';
+import 'package:deno_postgres_interop/src/transaction_options.dart';
+import 'package:deno_postgres_interop/src/undefined.dart';
 import 'package:deno_postgres_interop/src/util.dart';
 
 /// [deno-postgres@v0.17.0/Transaction](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction).
@@ -14,6 +20,25 @@ import 'package:deno_postgres_interop/src/util.dart';
 class Transaction {
   /// [deno-postgres@v0.17.0/Transaction/savepoints](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#accessor_savepoints).
   external List<Savepoint> get savepoints;
+
+  /// [deno-postgres@v0.17.0/Transaction/construtor](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#ctor_0).
+  factory Transaction({
+    required String name,
+    required QueryClient client,
+    required Future<QueryResult> Function(Query query) executeQueryCallback,
+    required void Function(String? name) updateClientLockCallback,
+    TransactionOptions? options,
+  }) =>
+      callConstructor(
+        'Transaction',
+        [
+          name,
+          if (options != null) options else undefined,
+          client,
+          (Query query) => futureToPromise(executeQueryCallback(query)),
+          updateClientLockCallback,
+        ],
+      );
 
   /// [deno-postgres@v0.17.0/Transaction/getSavepoint](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_getSavepoint_0).
   external Savepoint? getSavepoint(String name);
