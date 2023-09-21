@@ -13,7 +13,6 @@ export 'src/pool.dart';
 export 'src/pool_client.dart';
 export 'src/query.dart';
 export 'src/query_client.dart';
-export 'src/query_object.dart' show QueryArguments;
 export 'src/query_object_result.dart';
 export 'src/query_result.dart';
 export 'src/tls_options.dart';

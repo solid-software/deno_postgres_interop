@@ -1,7 +1,7 @@
 import 'dart:js_interop';
 import 'dart:js_util';
 
-import 'package:deno_postgres_interop/deno_postgres_interop.dart';
+import 'package:deno_postgres_interop/src/client_common.dart';
 import 'package:deno_postgres_interop/src/encoded_arg.dart';
 
 /// [deno-postgres@v0.17.0/QueryOptions](https://deno.land/x/postgres@v0.17.0/query/query.ts?s=QueryOptions).
