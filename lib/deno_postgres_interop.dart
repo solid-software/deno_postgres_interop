@@ -9,6 +9,8 @@ export 'src/command_type.dart';
 export 'src/connection.dart';
 export 'src/connection_options.dart';
 export 'src/encoded_arg.dart';
+export 'src/errors/connection_error.dart';
+export 'src/errors/connection_params_error.dart';
 export 'src/errors/postgres_error.dart';
 export 'src/errors/transaction_error.dart';
 export 'src/isolation_level.dart';
