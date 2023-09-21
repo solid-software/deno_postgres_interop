@@ -2,6 +2,6 @@ import 'dart:js_interop';
 
 import 'package:deno_postgres_interop/src/errors/js_error.dart';
 
-/// [js/Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error).
+/// [deno-postgres@v0.17.0/ConnectionParamsError](https://deno.land/x/postgres@v0.17.0/client/error.ts?s=ConnectionParamsError).
 @JS('Error')
 class ConnectionParamsError extends JSError {}
