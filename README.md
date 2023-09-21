@@ -49,9 +49,6 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
 
 - Transaction
   - [ ] constructor
-  - [ ] rollback
-    - [ ] `(options: { savepoint?: string | Savepoint; })`
-    - [ ] `(options: { chain?: boolean; })`
 
 - errors:
   - [ ] TransactionError

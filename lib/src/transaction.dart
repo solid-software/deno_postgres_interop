@@ -51,21 +51,28 @@ extension TransactionProps on Transaction {
       ClientCommon.queryArrayWithOptions(this, config);
 
   /// [deno-postgres@v0.17.0/Transaction/rollback](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_rollback_0).
-  Future<void> rollback(Savepoint? savepoint) => callFutureMethod(
+  Future<void> rollback([Savepoint? savepoint]) => callFutureMethod(
         this,
         'rollback',
         [if (savepoint != null) savepoint],
       );
 
-  // TODO:
-  // rollback(options?: { savepoint?: string | Savepoint; }): Promise<void>
+  // [deno-postgres@v0.17.0/Transaction/rollback](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_rollback_1).
+  // this has the same functionality as [rollback] and [rollbackByName]
+  // so it won't be implemented.
+
+  /// [deno-postgres@v0.17.0/Transaction/rollback](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_rollback_2).
+  Future<void> rollbackWithChain() => callFutureMethod(
+        this,
+        'rollback',
+        [
+          jsify({'chain': true}),
+        ],
+      );
 
   /// [deno-postgres@v0.17.0/Transaction/rollback](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_rollback_0).
   Future<void> rollbackByName(String savepoint) =>
       callFutureMethod(this, 'rollback', [savepoint]);
-
-  // TODO:
-  // rollback(options?: { chain?: boolean; }): Promise<void>
 
   /// [deno-postgres@v0.17.0/Transaction/savepoint](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Transaction#method_savepoint_0).
   Future<Savepoint> createSavepoint(String name) =>
