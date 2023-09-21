@@ -43,6 +43,7 @@ ${e.cause}
   ${e.cause.name}
   ${e.cause.cause}
   ${e.cause.message}
+  ${e.cause.fields}
 ${e.message}
 $e
 ''');
