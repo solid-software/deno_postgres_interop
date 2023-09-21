@@ -3,6 +3,8 @@ import 'dart:js_util';
 
 import 'package:deno_postgres_interop/src/client_configuration.dart';
 import 'package:deno_postgres_interop/src/promise.dart';
+import 'package:deno_postgres_interop/src/query.dart';
+import 'package:deno_postgres_interop/src/query_result.dart';
 import 'package:deno_postgres_interop/src/transport.dart';
 import 'package:deno_postgres_interop/src/util.dart';
 
@@ -37,11 +39,10 @@ extension ConnectionProps on Connection {
   /// [deno-postgres@v0.17.0/Connection/end](https://deno.land/x/postgres@v0.17.0/connection/connection.ts?s=Connection#method_end_0).
   Future<void> end() => callFutureMethod(this, 'end');
 
-  // https://deno.land/x/postgres@v0.17.0/connection/connection.ts?s=Connection#method_query_0
-  // query(query: Query<ResultType.ARRAY>): Promise<QueryArrayResult>
-
-  // https://deno.land/x/postgres@v0.17.0/connection/connection.ts?s=Connection#method_query_1
-  // query(query: Query<ResultType.OBJECT>): Promise<QueryObjectResult>
+  /// [deno-postgres@v0.17.0/Connection/query](https://deno.land/x/postgres@v0.17.0/connection/connection.ts?s=Connection#method_query_0).
+  /// [deno-postgres@v0.17.0/Connection/query](https://deno.land/x/postgres@v0.17.0/connection/connection.ts?s=Connection#method_query_1).
+  Future<T> queryArray<T extends QueryResult>(Query query) =>
+      callFutureMethod(this, 'query', [query]);
 
   // https://deno.land/x/postgres@v0.17.0/connection/connection.ts?s=Connection#method_startup_0
   // startup(is_reconnection: boolean)
