@@ -2,6 +2,7 @@ import 'dart:js_interop';
 import 'dart:js_util';
 
 import 'package:deno_postgres_interop/src/client_common.dart';
+import 'package:deno_postgres_interop/src/connection.dart';
 import 'package:deno_postgres_interop/src/query_array_result.dart';
 import 'package:deno_postgres_interop/src/query_object_options.dart';
 import 'package:deno_postgres_interop/src/query_object_result.dart';
@@ -15,6 +16,9 @@ import 'package:deno_postgres_interop/src/util.dart';
 class QueryClient {
   /// [deno-postgres@v0.17.0/QueryClient/session](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#accessor_session).
   external Session get session;
+
+  /// [deno-postgres@v0.17.0/QueryClient/constructor](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#ctor_0).
+  external factory QueryClient(Connection connection);
 }
 
 /// [deno-postgres@v0.17.0/QueryClient](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient).
@@ -26,8 +30,7 @@ extension QueryClientProps on QueryClient {
   Future<void> closeConnection() => callFutureMethod(this, 'closeConnection');
 
   /// [deno-postgres@v0.17.0/QueryClient/resetSessionMetadata](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_resetSessionMetadata_0).
-  Future<void> resetSessionMetadata() =>
-      callFutureMethod(this, 'resetSessionMetadata');
+  void resetSessionMetadata() => callMethod(this, 'resetSessionMetadata', []);
 
   /// [deno-postgres@v0.17.0/QueryClient/connect](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_connect_0).
   Future<void> connect() => callFutureMethod(this, 'connect');

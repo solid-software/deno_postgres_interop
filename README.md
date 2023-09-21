@@ -42,11 +42,3 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
    Note: your filename may differ from the example
 
 5. You can use the function now.
-
-## Unimplemented
-- [ ] QueryClient
-
-- errors:
-  - [ ] TransactionError
-  - [ ] ConnectionError
-  - [ ] PostgresError
