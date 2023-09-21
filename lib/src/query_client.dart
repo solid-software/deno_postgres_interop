@@ -2,19 +2,36 @@ import 'dart:js_interop';
 import 'dart:js_util';
 
 import 'package:deno_postgres_interop/src/client_common.dart';
+import 'package:deno_postgres_interop/src/connection.dart';
 import 'package:deno_postgres_interop/src/query_array_result.dart';
 import 'package:deno_postgres_interop/src/query_object_options.dart';
 import 'package:deno_postgres_interop/src/query_object_result.dart';
+import 'package:deno_postgres_interop/src/session.dart';
 import 'package:deno_postgres_interop/src/transaction.dart';
 import 'package:deno_postgres_interop/src/transaction_options.dart';
 import 'package:deno_postgres_interop/src/util.dart';
 
 /// [deno-postgres@v0.17.0/QueryClient](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient).
 @JS()
-class QueryClient {}
+class QueryClient {
+  /// [deno-postgres@v0.17.0/QueryClient/session](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#accessor_session).
+  external Session get session;
+
+  /// [deno-postgres@v0.17.0/QueryClient/constructor](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#ctor_0).
+  external factory QueryClient(Connection connection);
+}
 
 /// [deno-postgres@v0.17.0/QueryClient](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient).
 extension QueryClientProps on QueryClient {
+  /// [deno-postgres@v0.17.0/QueryClient/connected](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#accessor_connected).
+  bool get isConnected => getProperty(this, 'connected');
+
+  /// [deno-postgres@v0.17.0/QueryClient/closeConnection](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_closeConnection_0).
+  Future<void> closeConnection() => callFutureMethod(this, 'closeConnection');
+
+  /// [deno-postgres@v0.17.0/QueryClient/resetSessionMetadata](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_resetSessionMetadata_0).
+  void resetSessionMetadata() => callMethod(this, 'resetSessionMetadata', []);
+
   /// [deno-postgres@v0.17.0/QueryClient/connect](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#method_connect_0).
   Future<void> connect() => callFutureMethod(this, 'connect');
 
