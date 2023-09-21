@@ -34,12 +34,15 @@ ${result.rowDescription?.columns.map((e) => '    name = ${e.name}').join('\n')}
         ...result.rows.map(rowToPrettyString),
       ].join('\n\n'),
     );
-  } on JSError catch (e) {
+  } on TransactionError catch (e) {
     await client.end();
 
     return Response('''
 ${e.name}
 ${e.cause}
+  ${e.cause.name}
+  ${e.cause.cause}
+  ${e.cause.message}
 ${e.message}
 $e
 ''');
