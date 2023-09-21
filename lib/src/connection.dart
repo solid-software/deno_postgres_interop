@@ -44,6 +44,7 @@ extension ConnectionProps on Connection {
   Future<T> queryArray<T extends QueryResult>(Query query) =>
       callFutureMethod(this, 'query', [query]);
 
-  // https://deno.land/x/postgres@v0.17.0/connection/connection.ts?s=Connection#method_startup_0
-  // startup(is_reconnection: boolean)
+  /// [deno-postgres@v0.17.0/Connection/startup](https://deno.land/x/postgres@v0.17.0/connection/connection.ts?s=Connection#method_startup_0).
+  Future<void> startup({required bool isReconnection}) =>
+      callFutureMethod(this, 'startup', [isReconnection]);
 }
