@@ -1,6 +1,3 @@
-import 'dart:js_interop';
-import 'dart:js_util';
-
 import 'package:deno_postgres_interop/deno_postgres_interop.dart';
 import 'package:supabase_functions/supabase_functions.dart';
 
@@ -67,16 +64,3 @@ String rowToPrettyString(Map<String, dynamic> row) => row
     .toString()
     .replaceAll(', ', '\n')
     .replaceAllMapped(RegExp(r'\{|\}'), (_) => '');
-
-/// [js/Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error).
-@JS('Error')
-class JSError {
-  /// [js/Error/name](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/name).
-  external String get name;
-
-  /// [js/Error/cause](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause).
-  external Error? get cause;
-
-  /// [js/Error/message](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/message).
-  external String get message;
-}
