@@ -4,9 +4,7 @@ version: 1.0.0
 publish_to: none
 
 environment:
-  # https://github.com/invertase/dart_edge/issues/50
-  # Tested with 3.0.6, but others should work too
-  sdk: '>=3.0.0 <3.1.0'
+  sdk: ^3.0.0
 
 dependencies:
   deno_postgres_interop:

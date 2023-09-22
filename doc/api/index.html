@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="generator" content="made with love by dartdoc 7.0.0-wip">
+  <meta name="description" content="deno_postgres_interop API docs, for the Dart programming language.">
+  <title>deno_postgres_interop - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li class="self-crumb">deno_postgres_interop package</li>
+  </ol>
+  <div class="self-name">deno_postgres_interop</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <h1 id="deno_postgres_interop">deno_postgres_interop</h1>
+<p><a href="https://pub.dev/packages/solid_lints"><img src="https://img.shields.io/badge/style-solid-orange" alt="style: solid"></a>
+<a href="https://www.worklog.ai"><img src="https://nokycucwgzweensacwfy.supabase.co/functions/v1/get_project_badge?projectName=deno_postgres_interop" alt="$solid_lints"></a></p>
+<p>The package allows the use
+of <a href="https://deno.land/x/postgres">Deno Postgres</a>
+in <a href="https://deno.com/deploy">Deno Deploy</a>
+on <a href="https://docs.dartedge.dev/">dart_edge</a>
+by creating interop bindings for the js library
+since other drivers rely on dart:io and don't work there.</p>
+<p>The main scenario is Supabase Edge Functions, but it should also work for other cases with dart2js.</p>
+<h2 id="usage-with-supabase-edge-functions">Usage with Supabase edge functions</h2>
+<ol>
+<li>
+<p>Add dependency in your pubspec.yaml:</p>
+<pre class="language-yaml"><code class="language-yaml">dependencies:
+  deno_postgres_interop: &lt;INSERT LATEST VERSION&gt;
+</code></pre>
+<p>or run</p>
+<pre class="language-bash"><code class="language-bash">dart pub add deno_postgres_interop
+</code></pre>
+</li>
+<li>
+<p>Import the package:</p>
+<pre class="language-dart"><code class="language-dart">import 'package:deno_postgres_interop/deno_postgres_interop.dart';
+</code></pre>
+</li>
+<li>
+<p>Compile the code that uses this package with:</p>
+<pre class="language-bash"><code class="language-bash">dart run edge build supabase_functions
+</code></pre>
+</li>
+<li>
+<p>Add imports to generated file by calling the script:</p>
+<pre class="language-bash"><code class="language-bash">dart run deno_postgres_interop:add_imports \
+  --filename=example/functions/dart_edge/main.dart.js
+</code></pre>
+<p>Note: your filename may differ from the example</p>
+</li>
+<li>
+<p>You can use the function now.</p>
+</li>
+</ol>
+<p>Note that because of the <a href="https://github.com/invertase/dart_edge/issues/50">bug in dart_edge</a>, SDK versions &gt;= 3.1.0 are not actually supported.</p>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="deno_postgres_interop">
+  <span class="name"><a href="deno_postgres_interop/deno_postgres_interop-library.html">deno_postgres_interop</a></span> 
+
+</dt>
+<dd>An interop for <a href="https://deno.land/x/postgres@v0.17.0"></a><a href="mailto:deno-postgres@v0.17.0">deno-postgres@v0.17.0</a>.
+</dd>
+
+        </dl>
+      </section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li class="self-crumb">deno_postgres_interop package</li>
+</ol>
+
+
+    <h5 class="hidden-xs"><span class="package-name">deno_postgres_interop</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="deno_postgres_interop/deno_postgres_interop-library.html">deno_postgres_interop</a></li>
+</ol>
+
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+
+</main>
+
+<footer>
+  <span class="no-break">
+    deno_postgres_interop
+      0.0.1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+
