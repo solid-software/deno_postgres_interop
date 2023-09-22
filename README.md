@@ -42,3 +42,5 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
    Note: your filename may differ from the example
 
 5. You can use the function now.
+
+Note that because of the [bug in dart_edge](https://github.com/invertase/dart_edge/issues/50), SDK versions >= 3.1.0 are not actually supported.

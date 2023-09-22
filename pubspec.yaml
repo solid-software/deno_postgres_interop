@@ -6,9 +6,7 @@ version: 0.0.1
 repository: https://github.com/solid-software/deno_postgres_interop
 
 environment:
-  # https://github.com/invertase/dart_edge/issues/50
-  # Tested with 3.0.6, but others should work too
-  sdk: '>=3.0.0 <3.1.0'
+  sdk: ^3.0.0
 
 dependencies:
   args: ^2.4.2
