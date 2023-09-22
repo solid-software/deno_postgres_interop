@@ -3,13 +3,13 @@ import 'dart:js_util';
 
 import 'package:deno_postgres_interop/src/partial/partial_connection_options.dart';
 
-/// [deno-postgres@v0.17.0/ConnectionOptions](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ConnectionOptions).
+/// [deno-postgres@v​0.17.0/ConnectionOptions](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ConnectionOptions).
 @JS()
 class ConnectionOptions {
-  /// [deno-postgres@v0.17.0/ConnectionOptions](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ConnectionOptions#prop_attempts).
+  /// [deno-postgres@v​0.17.0/ConnectionOptions](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ConnectionOptions#prop_attempts).
   external int get attempts;
 
-  /// [deno-postgres@v0.17.0/ConnectionOptions](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ConnectionOptions).
+  /// [deno-postgres@v​0.17.0/ConnectionOptions](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ConnectionOptions).
   factory ConnectionOptions({
     required int attempts,
     int Function(int previousInterval)? nextInterval,
@@ -25,9 +25,9 @@ class ConnectionOptions {
   }
 }
 
-/// [deno-postgres@v0.17.0/ConnectionOptions](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ConnectionOptions).
+/// [deno-postgres@v​0.17.0/ConnectionOptions](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ConnectionOptions).
 extension ConnectionOptionsProps on ConnectionOptions {
-  /// [deno-postgres@v0.17.0/ConnectionOptions](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ConnectionOptions#prop_interval).
+  /// [deno-postgres@v​0.17.0/ConnectionOptions](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ConnectionOptions#prop_interval).
   ///
   /// Either this or [interval] is null.
   int Function(int previousInterval)? get nextInterval {
@@ -36,7 +36,7 @@ extension ConnectionOptionsProps on ConnectionOptions {
     return prop is int ? null : prop as int Function(int previousInterval);
   }
 
-  /// [deno-postgres@v0.17.0/ConnectionOptions](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ConnectionOptions#prop_interval).
+  /// [deno-postgres@v​0.17.0/ConnectionOptions](https://deno.land/x/postgres@v0.17.0/connection/connection_params.ts?s=ConnectionOptions#prop_interval).
   ///
   /// Either this or [nextInterval] is null.
   int? get interval {
