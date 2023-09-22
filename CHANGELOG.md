@@ -1,5 +1,6 @@
 ## 0.0.4
 - Fixed links in docs.
+- Updated supported platforms.
 
 ## 0.0.3
 - Unlock SDK >= 3.1.0.
