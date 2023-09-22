@@ -1,6 +1,6 @@
 name: deno_postgres_interop
 description:
-  An interop for js package deno-postgres@​0.17.0 - PostgreSQL
+  An interop for js package deno-postgres@v​0.17.0 - PostgreSQL
   driver that can be used in deno-deploy (supabase edge functions).
 version: 0.0.3
 repository: https://github.com/solid-software/deno_postgres_interop

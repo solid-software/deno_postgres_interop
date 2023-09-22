@@ -1,4 +1,4 @@
-/// An interop for [deno-postgres@​0.17.0](https://deno.land/x/postgres@v0.17.0).
+/// An interop for [deno-postgres@v​0.17.0](https://deno.land/x/postgres@v0.17.0).
 library;
 
 export 'src/client.dart';

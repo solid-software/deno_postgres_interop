@@ -3,13 +3,13 @@ import 'dart:js_util';
 
 import 'package:deno_postgres_interop/src/query_options.dart';
 
-/// [deno-postgres@​0.17.0/QueryObjectOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryObjectOptions).
+/// [deno-postgres@v​0.17.0/QueryObjectOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryObjectOptions).
 @JS()
 class QueryObjectOptions extends QueryOptions {
-  /// [deno-postgres@​0.17.0/QueryObjectOptions/fields](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#prop_fields).
+  /// [deno-postgres@v​0.17.0/QueryObjectOptions/fields](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#prop_fields).
   external List<String>? get fields;
 
-  /// [deno-postgres@​0.17.0/QueryObjectOptions](https://deno.land/x/postgres@v0.17.0/query/mod.ts?s=QueryObjectOptions).
+  /// [deno-postgres@v​0.17.0/QueryObjectOptions](https://deno.land/x/postgres@v0.17.0/query/mod.ts?s=QueryObjectOptions).
   factory QueryObjectOptions({List<String>? fields, bool? isCamelCase}) =>
       jsify(
         {
@@ -19,8 +19,8 @@ class QueryObjectOptions extends QueryOptions {
       ) as QueryObjectOptions;
 }
 
-/// [deno-postgres@​0.17.0/QueryObjectOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryObjectOptions).
+/// [deno-postgres@v​0.17.0/QueryObjectOptions](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryObjectOptions).
 extension QueryObjectOptionsProps on QueryObjectOptions {
-  /// [deno-postgres@​0.17.0/QueryObjectOptions/camelcase](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#prop_camelcase).
+  /// [deno-postgres@v​0.17.0/QueryObjectOptions/camelcase](https://deno.land/x/postgres@v0.17.0/mod.ts?s=QueryClient#prop_camelcase).
   bool? get isCamelCase => getProperty(this, 'camelcase');
 }
