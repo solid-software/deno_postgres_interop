@@ -15,3 +15,6 @@ dependencies:
 
 dev_dependencies:
   solid_lints: ^0.0.19
+
+platforms:
+  linux:
