@@ -6,9 +6,9 @@ import 'package:yaml/yaml.dart';
 
 class Config {
   final String fileUrlPrefix;
-  final Map<String, List<String>> classesMap;
+  final Map<String, List<(String, String)>> classesMap;
 
-  Set<String> get classes => classesMap.values.flattened.toSet();
+  Set<(String, String)> get classes => classesMap.values.flattened.toSet();
 
   Config({required this.fileUrlPrefix, required this.classesMap});
 
@@ -19,7 +19,13 @@ class Config {
       final classesMap = (parsedYaml['classes_map'] as YamlMap).map(
         (key, value) => MapEntry(
           key as String,
-          [...value as YamlList].cast<String>(),
+          [...value as YamlList]
+              .map(
+                (e) => e is YamlMap
+                    ? (e.keys.first as String, e.values.first as String)
+                    : (e as String, e),
+              )
+              .toList(),
         ),
       );
 
@@ -32,8 +38,13 @@ class Config {
     }
   }
 
-  String _filenameForClass(String classname) =>
-      classesMap.entries.firstWhere((e) => e.value.contains(classname)).key;
+  String _filenameForClass(String classname) => classesMap.entries
+      .firstWhere(
+        (e) => e.value.any(
+          (classnamePair) => classnamePair.$1 == classname,
+        ),
+      )
+      .key;
 
   String importStringForClass(String classname) {
     final filename = _filenameForClass(classname);

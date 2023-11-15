@@ -6,4 +6,5 @@ classes_map:
   'mod.ts':
     - QueryClient
     - Client
+    - 'Client': PostgresClient
     - Transaction
