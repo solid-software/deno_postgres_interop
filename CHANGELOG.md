@@ -1,3 +1,6 @@
+## 0.0.5
+- Renamed `Client` to `PostgresClient` to avoid conflict with class from `dart:html`.
+
 ## 0.0.4
 - Fixed links in docs.
 - Updated supported platforms.
