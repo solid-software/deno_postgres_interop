@@ -2,13 +2,14 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:collection/collection.dart';
+import 'package:deno_postgres_interop/src/add_imports/class_interop_data.dart';
 import 'package:yaml/yaml.dart';
 
 class Config {
   final String fileUrlPrefix;
-  final Map<String, List<(String, String)>> classesMap;
+  final Map<String, List<ClassInteropData>> classesMap;
 
-  Set<(String, String)> get classes => classesMap.values.flattened.toSet();
+  Set<ClassInteropData> get classes => classesMap.values.flattened.toSet();
 
   Config({required this.fileUrlPrefix, required this.classesMap});
 
@@ -19,13 +20,7 @@ class Config {
       final classesMap = (parsedYaml['classes_map'] as YamlMap).map(
         (key, value) => MapEntry(
           key as String,
-          [...value as YamlList]
-              .map(
-                (e) => e is YamlMap
-                    ? (e.keys.first as String, e.values.first as String)
-                    : (e as String, e),
-              )
-              .toList(),
+          ClassInteropData.fromYamlList(value as YamlList),
         ),
       );
 
@@ -41,7 +36,7 @@ class Config {
   String _filenameForClass(String classname) => classesMap.entries
       .firstWhere(
         (e) => e.value.any(
-          (classnamePair) => classnamePair.$1 == classname,
+          (classnamePair) => classnamePair.jsName == classname,
         ),
       )
       .key;
