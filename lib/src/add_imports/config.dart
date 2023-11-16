@@ -20,12 +20,9 @@ class Config {
         'file_url_prefix': String fileUrlPrefix,
       } = loadYaml(yamlString) as YamlMap;
 
-      final classesMap = classesYamlMap.map(
-        (key, value) => MapEntry(
-          key as String,
-          ClassInteropData.fromYamlList(value as YamlList),
-        ),
-      );
+      final classesMap = classesYamlMap
+          .cast<String, YamlList>()
+          .mapValues(ClassInteropData.fromYamlList);
 
       return Config(
         classesMap: classesMap,
@@ -48,4 +45,9 @@ class Config {
 
     return 'import { $classname } from "$url";';
   }
+}
+
+extension MapMapValues<K, V> on Map<K, V> {
+  Map<K, V1> mapValues<V1>(V1 Function(V) f) =>
+      map((k, v) => MapEntry(k, f(v)));
 }
