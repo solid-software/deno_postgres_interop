@@ -38,20 +38,16 @@ String createNewSource(String sourceString, Config config) {
       .whereNotNull()
       .toSet()
       .where((alias) => config.classes.any((e) => e.$2 == alias))
-      .whereNot((e) => sourceString.contains('import { $e }'))
+      .whereNot((e) => sourceString.contains('self.$e = '))
+      .map((alias) => config.classes.firstWhere((e) => e.$2 == alias))
       .toList();
 
+  final imports = classes.map((e) => config.importStringForClass(e.$1));
+  final assignments = classes.map((e) => 'self.${e.$2} = ${e.$1};');
+
   return [
-    ...[
-      ((String, String) e) => config.importStringForClass(e.$1),
-      ((String, String) e) => 'self.${e.$2} = ${e.$1};',
-    ]
-        .map(
-          classes
-              .map((alias) => config.classes.firstWhere((e) => e.$2 == alias))
-              .map,
-        )
-        .flattened,
+    ...imports,
+    ...assignments,
     sourceString,
   ].join('\n');
 }

@@ -1,10 +1,10 @@
-file_url_prefix: 'https://deno.land/x/postgres@v0.17.0/'
+file_url_prefix: https://deno.land/x/postgres@v0.17.0/
 
 classes_map:
-  'query/query.ts':
+  query/query.ts:
     - QueryObjectResult
-  'mod.ts':
+  mod.ts:
     - QueryClient
     - Client
-    - 'Client': PostgresClient
+    - Client: PostgresClient
     - Transaction
