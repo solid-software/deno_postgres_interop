@@ -2,6 +2,7 @@
 // ignore_for_file: public_member_api_docs
 
 import 'package:collection/collection.dart';
+import 'package:deno_postgres_interop/src/add_imports/better_map.dart';
 import 'package:deno_postgres_interop/src/add_imports/class_interop_data.dart';
 import 'package:yaml/yaml.dart';
 
@@ -33,10 +34,8 @@ class Config {
     }
   }
 
-  String _filenameForClass(String classname) => classesMap.entries
-      .firstWhere(
-        (e) => e.value.any((interop) => interop.jsName == classname),
-      )
+  String _filenameForClass(String classname) => classesMap
+      .firstWhereValue((v) => v.map((e) => e.jsName).contains(classname))
       .key;
 
   String importStringForClass(String classname) {
@@ -45,9 +44,4 @@ class Config {
 
     return 'import { $classname } from "$url";';
   }
-}
-
-extension MapMapValues<K, V> on Map<K, V> {
-  Map<K, V1> mapValues<V1>(V1 Function(V) f) =>
-      map((k, v) => MapEntry(k, f(v)));
 }
