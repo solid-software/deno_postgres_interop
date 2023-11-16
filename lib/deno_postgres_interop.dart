@@ -1,7 +1,6 @@
 /// An interop for [deno-postgres@v​0.17.0](https://deno.land/x/postgres@v0.17.0).
 library;
 
-export 'src/client.dart';
 export 'src/client_configuration.dart';
 export 'src/client_options.dart';
 export 'src/column.dart';
@@ -19,6 +18,7 @@ export 'src/partial/partial_connection_options.dart';
 export 'src/partial/partial_tls_options.dart';
 export 'src/pool.dart';
 export 'src/pool_client.dart';
+export 'src/postgres_client.dart';
 export 'src/query.dart';
 export 'src/query_array_result.dart';
 export 'src/query_client.dart';
