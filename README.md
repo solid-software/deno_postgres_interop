@@ -1,6 +1,6 @@
 # deno_postgres_interop
 [![style: solid](https://img.shields.io/badge/style-solid-orange)](https://pub.dev/packages/solid_lints)
-[![$solid_lints](https://nokycucwgzweensacwfy.supabase.co/functions/v1/get_project_badge?projectName=deno_postgres_interop)](https://www.worklog.ai)
+[![deno_postgres_interop](https://nokycucwgzweensacwfy.supabase.co/functions/v1/get_project_badge?projectId=241)](https://nokycucwgzweensacwfy.supabase.co/functions/v1/get_project_url?projectId=241)
 
 The package allows the use
 of [Deno Postgres](https://deno.land/x/postgres)
