@@ -24,8 +24,8 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
    dart pub add deno_postgres_interop
    ```
 
-2. Add the config file (default name is `add_imports.yaml`)
-   This file is used to lookup files where the classes are defined
+2. Add the config file (default name is `add_imports.yaml`).
+   This file is used to lookup files where the classes are defined.
    ```yaml
    file_url_prefix: 'https://deno.land/x/postgres@v0.17.0/'
 
