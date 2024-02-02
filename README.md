@@ -24,23 +24,38 @@ The main scenario is Supabase Edge Functions, but it should also work for other 
    dart pub add deno_postgres_interop
    ```
 
-2. Import the package:
+2. Add the config file (default name is `add_imports.yaml`).
+   This file is used to lookup files where the classes are defined.
+   ```yaml
+   file_url_prefix: 'https://deno.land/x/postgres@v0.17.0/'
+
+   classes_map:
+      'query/query.ts':
+         - QueryObjectResult
+      'mod.ts':
+         - QueryClient
+         - Client
+         - Transaction
+   ```
+
+3. Import the package:
    ```dart
    import 'package:deno_postgres_interop/deno_postgres_interop.dart';
    ```
 
-3. Compile the code that uses this package with:
+4. Compile the code that uses this package with:
    ```bash
    dart run edge build supabase_functions
    ```
 
-4. Add imports to generated file by calling the script:
+5. Add imports to generated file by calling the script:
    ```bash
    dart run deno_postgres_interop:add_imports \
-     --filename=example/functions/dart_edge/main.dart.js
+     --filename=example/functions/dart_edge/main.dart.js [\
+     --configpath=add_imports.yaml] #this is the default value
    ```
    Note: your filename may differ from the example
 
-5. You can use the function now.
+6. You can use the function now.
 
 Note that because of the [bug in dart_edge](https://github.com/invertase/dart_edge/issues/50), SDK versions >= 3.1.0 are not actually supported.
