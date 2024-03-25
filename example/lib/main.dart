@@ -7,7 +7,7 @@ Future<Response> fetch(Request _) async {
   final dbUrl = Deno.env.get('SUPABASE_DB_URL');
   if (dbUrl == null) return Response.error();
 
-  final client = Client(dbUrl);
+  final client = PostgresClient(dbUrl);
   await client.connect();
   try {
     final result = await client.transaction(

@@ -37,14 +37,17 @@ String createNewSource(String sourceString, Config config) {
       .map((e) => e.group(1))
       .whereNotNull()
       .toSet()
-      .intersection(config.classes)
-      .whereNot((e) => sourceString.contains('import { $e }'))
+      .where((alias) => config.classes.any((e) => e.alias == alias))
+      .whereNot((e) => sourceString.contains('self.$e = '))
+      .map((alias) => config.classes.firstWhere((e) => e.alias == alias))
       .toList();
 
+  final imports = classes.map((e) => config.importStringForClass(e.jsName));
+  final assignments = classes.map((e) => 'self.${e.alias} = ${e.jsName};');
+
   return [
-    ...[config.importStringForClass, (e) => 'self.$e = $e;']
-        .map(classes.map)
-        .flattened,
+    ...imports,
+    ...assignments,
     sourceString,
   ].join('\n');
 }
