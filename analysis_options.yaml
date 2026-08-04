@@ -7,9 +7,10 @@ plugins:
       number_of_parameters: false
       cyclomatic_complexity: false
       avoid_non_null_assertion: false
+      avoid_duplicate_code: false
 
 linter:
   rules:
-    package_api_docs: true
     prefer_foreach: true
     prefer_single_quotes: true
+
