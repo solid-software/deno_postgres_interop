@@ -1,24 +1,21 @@
 import 'dart:js_interop';
-import 'dart:js_util';
 
 import 'package:deno_postgres_interop/src/client_options.dart';
 import 'package:deno_postgres_interop/src/pool_client.dart';
-import 'package:deno_postgres_interop/src/undefined.dart';
-import 'package:deno_postgres_interop/src/util.dart';
 
 /// [deno-postgres@v​0.17.0/Pool](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Pool).
-@JS()
-class Pool {
+@JS('Pool')
+extension type Pool._(JSObject _) implements JSObject {
   /// [deno-postgres@v​0.17.0/Pool/constructor](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Pool#ctor_0).
   factory Pool({
     required int size,
     bool? lazy,
   }) =>
-      callConstructor('Pool', [
-        undefined,
+      Pool._internal(
+        null,
         size,
-        if (lazy != null) lazy,
-      ]);
+        lazy,
+      );
 
   /// [deno-postgres@v​0.17.0/Pool/constructor](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Pool#ctor_0).
   factory Pool.withOptions({
@@ -26,11 +23,11 @@ class Pool {
     required int size,
     bool? lazy,
   }) =>
-      callConstructor('Pool', [
+      Pool._internal(
         connectionParams,
         size,
-        if (lazy != null) lazy,
-      ]);
+        lazy,
+      );
 
   /// [deno-postgres@v​0.17.0/Pool/constructor](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Pool#ctor_0).
   factory Pool.withString({
@@ -38,28 +35,48 @@ class Pool {
     required int size,
     bool? lazy,
   }) =>
-      callConstructor('Pool', [
-        connectionString,
+      Pool._internal(
+        connectionString.toJS,
         size,
-        if (lazy != null) lazy,
-      ]);
-}
+        lazy,
+      );
 
-/// [deno-postgres@v​0.17.0/Pool](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Pool).
-extension PoolProps on Pool {
+  @JS('Pool')
+  external factory Pool._internal([
+    JSAny? connectionParamsOrString,
+    int? size,
+    bool? lazy,
+  ]);
+
   /// [deno-postgres@v​0.17.0/Pool/size](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Pool#prop_size).
-  int get connectionsCount => getProperty(this, 'size');
+  @JS('size')
+  external int get connectionsCount;
 
   /// [deno-postgres@v​0.17.0/Pool/available](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Pool#prop_available).
-  int get openConnectionsCount => getProperty(this, 'available');
+  @JS('available')
+  external int get openConnectionsCount;
+
+  @JS('connect')
+  external JSPromise<PoolClient> _connect();
 
   /// [deno-postgres@v​0.17.0/Pool/connect](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Pool#method_connect_0).
-  Future<PoolClient> connect() => callFutureMethod(this, 'connect');
+  Future<PoolClient> connect() => _connect().toDart;
+
+  @JS('end')
+  external JSPromise<JSAny?> _end();
 
   /// [deno-postgres@v​0.17.0/Pool/end](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Pool#method_end_0).
-  Future<void> end() => callFutureMethod(this, 'end');
+  Future<void> end() async {
+    await _end().toDart;
+  }
+
+  @JS('initialized')
+  external JSPromise<JSNumber> _initialized();
 
   /// [deno-postgres@v​0.17.0/Pool/initialized](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Pool#method_initialized_0).
-  Future<int> initializedConnectionsCount() =>
-      callFutureMethod(this, 'initialized');
+  Future<int> initializedConnectionsCount() async {
+    final res = await _initialized().toDart;
+
+    return res.toDartInt;
+  }
 }

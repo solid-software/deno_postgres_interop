@@ -1,5 +1,13 @@
 include: package:solid_lints/analysis_options.yaml
 
+plugins:
+  solid_lints:
+    version: ^1.0.0-dev.1
+    diagnostics:
+      number_of_parameters: false
+      cyclomatic_complexity: false
+      avoid_non_null_assertion: false
+
 linter:
   rules:
     package_api_docs: true

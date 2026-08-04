@@ -35,7 +35,7 @@ String createNewSource(String sourceString, Config config) {
   final classes = RegExp(r'new self.([A-Za-z]+)\(')
       .allMatches(sourceString)
       .map((e) => e.group(1))
-      .whereNotNull()
+      .nonNulls
       .toSet()
       .intersection(config.classes)
       .whereNot((e) => sourceString.contains('import { $e }'))

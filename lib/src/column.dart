@@ -1,9 +1,39 @@
 import 'dart:js_interop';
-import 'dart:js_util';
 
 /// [deno-postgres@v​0.17.0/Column](https://deno.land/x/postgres@v0.17.0/query/decode.ts?s=Column).
-@JS()
-class Column {
+@JS('Column')
+extension type Column._(JSObject _) implements JSObject {
+  /// [deno-postgres@v​0.17.0/Column](https://deno.land/x/postgres@v0.17.0/query/decode.ts?s=Column#ctor_0).
+  factory Column({
+    required String name,
+    required int tableOid,
+    required int index,
+    required int typeOid,
+    required int columnLength,
+    required int typeModifier,
+    required ColumnFormat format,
+  }) =>
+      Column._internal(
+        name,
+        tableOid,
+        index,
+        typeOid,
+        columnLength,
+        typeModifier,
+        format.id,
+      );
+
+  @JS('Column')
+  external factory Column._internal(
+    String name,
+    int tableOid,
+    int index,
+    int typeOid,
+    int columnLength,
+    int typeModifier,
+    int format,
+  );
+
   /// [deno-postgres@v​0.17.0/Column](https://deno.land/x/postgres@v0.17.0/query/decode.ts?s=Column).
   external String get name;
 
@@ -22,32 +52,12 @@ class Column {
   /// [deno-postgres@v​0.17.0/Column](https://deno.land/x/postgres@v0.17.0/query/decode.ts?s=Column).
   external int get typeModifier;
 
-  /// [deno-postgres@v​0.17.0/Column](https://deno.land/x/postgres@v0.17.0/query/decode.ts?s=Column#ctor_0).
-  factory Column({
-    required String name,
-    required int tableOid,
-    required int index,
-    required int typeOid,
-    required int columnLength,
-    required int typeModifier,
-    required ColumnFormat format,
-  }) =>
-      callConstructor('Column', [
-        name,
-        tableOid,
-        index,
-        typeOid,
-        columnLength,
-        typeModifier,
-        format.id,
-      ]);
-}
+  @JS('format')
+  external int get _format;
 
-/// [deno-postgres@v​0.17.0/Column](https://deno.land/x/postgres@v0.17.0/query/decode.ts?s=Column).
-extension ColumnProps on Column {
   /// [deno-postgres@v​0.17.0/Column](https://deno.land/x/postgres@v0.17.0/query/decode.ts?s=Column).
-  ColumnFormat get format => ColumnFormat.values
-      .firstWhere((e) => e.id == getProperty(this, 'format'));
+  ColumnFormat get format =>
+      ColumnFormat.values.firstWhere((e) => e.id == _format);
 }
 
 /// enum Format {
