@@ -1,3 +1,8 @@
+## 1.0.0-dev.1
+- Refactored JS Interop layer to modern Dart 3.3+ `extension type` (`dart:js_interop`).
+- Updated SDK constraint to `>=3.3.0 <4.0.0` supporting Dart SDK 3.12+ (Flutter 3.44+).
+- Removed legacy `@JS()` class annotations and `dart:js_util`.
+
 ## 0.0.4
 - Fixed links in docs.
 - Updated supported platforms.
