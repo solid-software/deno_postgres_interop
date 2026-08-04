@@ -1,15 +1,18 @@
-import 'dart:js_util';
+import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
 
-/// Convinience wrapper for [promiseToFuture] and [callMethod].
+/// Convenience wrapper for promise to future call.
 Future<T> callFutureMethod<T>(
-  Object o,
-  Object method, [
+  JSObject o,
+  String method, [
   List<Object?> args = const [],
-]) =>
-    promiseToFuture(
-      callMethod(
-        o,
-        method,
-        args,
-      ),
-    );
+]) async {
+  final jsArgs = args.map((e) => e?.jsify()).toList();
+  final promise = o.callMethodVarArgs<JSPromise<JSAny?>>(
+    method.toJS,
+    jsArgs,
+  );
+  final result = await promise.toDart;
+
+  return result?.dartify() as T;
+}

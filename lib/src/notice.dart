@@ -1,9 +1,8 @@
 import 'dart:js_interop';
-import 'dart:js_util';
 
 /// [deno-postgres@v​0.17.0/Notice](https://deno.land/x/postgres@v0.17.0/connection/message.ts?s=Notice).
-@JS()
-class Notice {
+@JS('Notice')
+extension type Notice._(JSObject _) implements JSObject {
   /// [deno-postgres@v​0.17.0/Notice/severity](https://deno.land/x/postgres@v0.17.0/connection/message.ts?s=Notice#prop_severity).
   external String get severity;
 
@@ -74,25 +73,26 @@ class Notice {
     String? file,
     String? line,
     String? routine,
-  }) {
-    return jsify({
-      'severity': severity,
-      'code': code,
-      'message': message,
-      if (detail != null) 'detail': detail,
-      if (hint != null) 'hint': hint,
-      if (position != null) 'position': position,
-      if (internalPosition != null) 'internalPosition': internalPosition,
-      if (internalQuery != null) 'internalQuery': internalQuery,
-      if (where != null) 'where': where,
-      if (schema != null) 'schema': schema,
-      if (table != null) 'table': table,
-      if (column != null) 'column': column,
-      if (dataType != null) 'dataType': dataType,
-      if (constraint != null) 'constraint': constraint,
-      if (file != null) 'file': file,
-      if (line != null) 'line': line,
-      if (routine != null) 'routine': routine,
-    }) as Notice;
-  }
+  }) => Notice._(
+    {
+          'severity': severity,
+          'code': code,
+          'message': message,
+          if (detail != null) 'detail': detail,
+          if (hint != null) 'hint': hint,
+          if (position != null) 'position': position,
+          if (internalPosition != null) 'internalPosition': internalPosition,
+          if (internalQuery != null) 'internalQuery': internalQuery,
+          if (where != null) 'where': where,
+          if (schema != null) 'schema': schema,
+          if (table != null) 'table': table,
+          if (column != null) 'column': column,
+          if (dataType != null) 'dataType': dataType,
+          if (constraint != null) 'constraint': constraint,
+          if (file != null) 'file': file,
+          if (line != null) 'line': line,
+          if (routine != null) 'routine': routine,
+        }.jsify()!
+        as JSObject,
+  );
 }

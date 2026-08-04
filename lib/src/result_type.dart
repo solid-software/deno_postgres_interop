@@ -4,5 +4,5 @@ enum ResultType {
   array,
 
   /// object.
-  object;
+  object,
 }
