@@ -1,4 +1,5 @@
 import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
 
 import 'package:deno_postgres_interop/src/client_common.dart';
 import 'package:deno_postgres_interop/src/isolation_level.dart';
@@ -23,22 +24,34 @@ extension type Transaction._(JSObject _) implements JSObject {
     required void Function(String? name) updateClientLockCallback,
     TransactionOptions? options,
   }) =>
-      Transaction._internal(
-        name,
+      _createTransaction(
+        name.toJS,
         options,
         client,
         ((Query query) => futureToPromise(executeQueryCallback(query))).toJS,
         ((JSString? name) => updateClientLockCallback(name?.toDart)).toJS,
       );
 
-  @JS('Transaction')
-  external factory Transaction._internal(
-    String name,
+  static Transaction _createTransaction(
+    JSString name,
     TransactionOptions? options,
     QueryClient client,
     JSFunction executeQueryCallback,
     JSFunction updateClientLockCallback,
-  );
+  ) {
+    final constructor = globalContext['Transaction'] as JSFunction?;
+    if (constructor == null) {
+      throw StateError('Transaction constructor not found in global context.');
+    }
+
+    return constructor.callAsConstructorVarArgs<Transaction>([
+      name,
+      options,
+      client,
+      executeQueryCallback,
+      updateClientLockCallback,
+    ]);
+  }
 
   @JS('savepoints')
   external JSArray<Savepoint> get _savepoints;

@@ -1,7 +1,9 @@
 import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
 
 import 'package:deno_postgres_interop/src/client_options.dart';
 import 'package:deno_postgres_interop/src/pool_client.dart';
+import 'package:deno_postgres_interop/src/undefined.dart';
 
 /// [deno-postgres@v​0.17.0/Pool](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Pool).
 @JS('Pool')
@@ -11,8 +13,8 @@ extension type Pool._(JSObject _) implements JSObject {
     required int size,
     bool? lazy,
   }) =>
-      Pool._internal(
-        null,
+      _createPool(
+        undefined,
         size,
         lazy,
       );
@@ -23,7 +25,7 @@ extension type Pool._(JSObject _) implements JSObject {
     required int size,
     bool? lazy,
   }) =>
-      Pool._internal(
+      _createPool(
         connectionParams,
         size,
         lazy,
@@ -35,18 +37,28 @@ extension type Pool._(JSObject _) implements JSObject {
     required int size,
     bool? lazy,
   }) =>
-      Pool._internal(
+      _createPool(
         connectionString.toJS,
         size,
         lazy,
       );
 
-  @JS('Pool')
-  external factory Pool._internal([
+  static Pool _createPool([
     JSAny? connectionParamsOrString,
     int? size,
     bool? lazy,
-  ]);
+  ]) {
+    final constructor = globalContext['Pool'] as JSFunction?;
+    if (constructor == null) {
+      throw StateError('Pool constructor not found in global context.');
+    }
+
+    return constructor.callAsConstructor<Pool>(
+      connectionParamsOrString,
+      size?.toJS,
+      lazy?.toJS,
+    );
+  }
 
   /// [deno-postgres@v​0.17.0/Pool/size](https://deno.land/x/postgres@v0.17.0/mod.ts?s=Pool#prop_size).
   @JS('size')

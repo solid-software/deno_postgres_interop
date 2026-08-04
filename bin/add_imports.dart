@@ -32,18 +32,13 @@ void main(List<String> arguments) {
 }
 
 String createNewSource(String sourceString, Config config) {
-  final classes = RegExp(r'new self.([A-Za-z]+)\(')
-      .allMatches(sourceString)
-      .map((e) => e.group(1))
-      .nonNulls
-      .toSet()
-      .intersection(config.classes)
+  final classesToImport = config.classes
       .whereNot((e) => sourceString.contains('import { $e }'))
       .toList();
 
   return [
-    ...[config.importStringForClass, (e) => 'self.$e = $e;']
-        .map(classes.map)
+    ...[config.importStringForClass, (e) => 'globalThis.$e = $e;']
+        .map(classesToImport.map)
         .flattened,
     sourceString,
   ].join('\n');
